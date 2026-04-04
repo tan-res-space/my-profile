@@ -1,0 +1,615 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tanmoy Resume/CV
+% LaTeX Template
+% Version 1.1 (20/7/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Cies Breijs (cies@kde.nl)
+% https://github.com/cies/resume with extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+
+\documentclass[11pt,a4paper]{article} % Font size (10-12pt) and paper size (a4paper, letterpaper, legalpaper, etc)
+%\usepackage[inline]{enumitem}
+
+\usepackage {enumitem}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{etoolbox} % Required for conditional CV versions
+
+\usepackage[english]{babel}
+\usepackage[style=numeric,sorting=ydnt]{biblatex}
+\addbibresource{publications.bib}
+
+\include{structure} % Include structure.tex which contains packages and document layout definitions
+
+\hyphenation{Some-long-word} % Specify custom hyphenation points in words with dashes where you would like hyphenation to occur, or alternatively, don't put any dashes in a word to stop hyphenation altogether
+
+%\usepackage[backend=biber, style=alphabetic,]{biblatex}
+%\title{A bibLaTeX example}
+%\addbibresource{publications} %Imports bibliography file
+
+%\usepackage[sort&compress]{natbib}
+%
+%\renewcommand{\bibsection}{}
+
+%----------------------------------------------------------------------------------------
+%	CV VERSION FLAGS
+%   Set via driver files (cv_industry.tex, cv_brief.tex, cv_noresearch.tex)
+%   or by uncommenting ONE of the lines below for standalone compilation.
+%   Default (no flag set) = full detailed CV.
+%----------------------------------------------------------------------------------------
+\newbool{industry}
+\newbool{brief}
+\newbool{noresearch}
+% Check if flags were set externally by a driver file via \def
+\ifdefined\CVINDUSTRY \booltrue{industry}\fi
+\ifdefined\CVBRIEF \booltrue{brief}\fi
+\ifdefined\CVNORESEARCH \booltrue{noresearch}\fi
+
+% Convenience booleans
+\newbool{showresearch}    % Show research/academic sections?
+\newbool{showtraining}    % Show training sections?
+\newbool{showpublications}% Show full publication list?
+\newbool{fulldetail}      % Show full project descriptions?
+
+% Default: everything on
+\booltrue{showresearch}
+\booltrue{showtraining}
+\booltrue{showpublications}
+\booltrue{fulldetail}
+
+% Industry: hide research, training, publications
+\ifbool{industry}{
+  \boolfalse{showresearch}
+  \boolfalse{showtraining}
+  \boolfalse{showpublications}
+}{}
+
+% Brief: hide detailed descriptions, research, training
+\ifbool{brief}{
+  \boolfalse{showresearch}
+  \boolfalse{showtraining}
+  \boolfalse{showpublications}
+  \boolfalse{fulldetail}
+}{}
+
+% No-research: hide research and training, keep full detail for industry roles
+\ifbool{noresearch}{
+  \boolfalse{showresearch}
+  \boolfalse{showtraining}
+  \boolfalse{showpublications}
+}{}
+
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\maintitle{TANMOY ROY}{PhD}  % Your name and date of birth or subtitle
+
+\noindent 	
+{Kolkata, India} \bull 
+\href{mailto:tanmoy.main@gmail.com}{tanmoy.main@gmail.com} \bull % Your email address
+\textsmaller{(+91)7003135175},\textsmaller{9830345901} \bull % phone number(s)
+\href{https://www.linkedin.com/in/tanmoy-roy-328b592b/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2Bwjs%2BswgSimn1FfyeypNYw%3D%3D}{LinkedIn} \bull
+\href{https://scholar.google.com/citations?user=FweJmHYAAAAJ\&hl=en}{Google Scholar}
+%				DoB:October 16, 1980
+ % Your address
+
+\spacedhrule{0.3em}{0.5em} % Horizontal rule - the first bracket is whitespace before and the second is after
+
+%----------------------------------------------------------------------------------------
+%	SUMMARY SECTION
+%----------------------------------------------------------------------------------------
+\roottitle{\lighter{\textscale{1.2}{SUMMARY}}} % Root section title
+
+\vspace{.2cm}
+
+\noindent
+
+%--- BRIEF SUMMARY (for brief version) ---
+\ifbool{brief}{
+AI and Machine Learning professional with 17+ years of experience across industry and academia. PhD in Speech Emotion Recognition from University of Johannesburg. Currently Senior Data Scientist at DeliverHealth Solutions, leading AI-driven healthcare solutions including Medical Coding Co-pilot and Automatic Medical Note Generation. Prior experience at SIEMENS (8+ years) in telecom and smart-grid systems using C/C++, Java, and Oracle.
+}{
+%--- INDUSTRY SUMMARY (for industry and noresearch versions) ---
+\ifbool{industry}{
+Tanmoy is an AI and Machine Learning (ML) professional with 17+ years of experience delivering impactful solutions across healthcare, finance, and telecom domains. He holds a \textbf{PhD} in Applied Machine Learning from the University of Johannesburg.
+
+Presently he is a \textbf{Senior Data Scientist} at DeliverHealth Solutions where his primary responsibility is \textbf{AI and ML} solutioning and team building. He collaborates with cross-functional stakeholders including Google and Microsoft to design scalable AI solutions. His work area encompasses \textit{medical data processing, speech processing, computer vision, natural language processing, and MLOps}.
+
+Tanmoy started his professional career in \textbf{SIEMENS} as a programmer and provided niche solutions to problems in wide-ranging projects encompassing telecommunication, electronic vehicles and smart-grid billing. His programming skills in different programming languages like C, C++, Java, SQL and his expertise in system design flourished during this tenure. He had the opportunity to be part of many complete project development life cycles and learn the craft.
+}{
+%--- FULL SUMMARY (default and noresearch) ---
+Tanmoy is an AI and Machine Learning (ML) Consultant, Coach, Research Scholar, Experienced Programmer and Freelance Research Guide. He perceived that research is incomplete without practical implementation based on his diversified experience in the industry as well as in academia and
+
+Presently he is a Senior Data-Scientist where his primary responsibility is \textbf{AI and ML} solutioning and team building. He also guides researchers of AI and ML fields and provides training to aspiring AI and ML practitioners. His work area encompasses \textit{speech processing, medical data processing, computer vision, natural language processing, medical imaging, and IoT-Edge computing}.
+
+\ifbool{noresearch}{}{
+During \textbf{PhD}, his primary research interest was \textbf{speech emotion recognition} (SER), on which he has a few peer-reviewed publications. Notably, he proposed a novel feature set for SER and proposed a novel algorithm for speech endpoint detection. Tanmoy received the \textit{Global Excellence Stature} (GES) scholarship from the \textbf{University of Johannesburg} (UJ) to pursue doctoral research and completed his PhD in the stipulated three years. After PhD he joined UJ as a \textbf{post-doctoral research fellow} under the GES fellowship.
+}
+
+Tanmoy started his professional career in \textbf{SIEMENS} as a programmer and provided niche solutions to problems in wide-ranging projects encompassing telecommunication, electronic vehicles and smart-grid billing. His programming skills in different programming languages like C, C++, Java, SQL and his expertise in system design flourished during this tenure. He had the opportunity to be part of many complete project development life cycles and learn the craft.
+}}
+
+\spacedhrule{0.3em}{0.5em} % Horizontal rule - the first bracket is whitespace before and the second is after
+
+
+%----------------------------------------------------------------------------------------
+%	EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{EXPERIENCE}}}
+
+\vspace{.2cm}
+
+{\textscale{1.4}{\textbf{DeliverHealth Solutions}}} \\
+{\textsc{Remote, India}}
+{\hfill [\textsc{July '24 -- Present}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+
+\noindent {\textscale{1.2} {\textbf{Senior Data Scientist}}} \\
+Led research and development for AI-driven product and solution ideation, driving organization-wide AI adoption initiatives. \\
+Collaborated with cross-functional stakeholders, including Product Owners and partners such as Google and Microsoft, to design and deploy scalable AI solutions addressing critical business challenges.
+
+\ifbool{fulldetail}{
+\textbf{Medical Coding Co-pilot:} System to assist human coders so that the time to code a single document can be significantly reduced. Here, we are leveraging proprietary historical data to finetune a Small Language Model in a continuous learning loop.
+
+\textbf{Automatic Medical Note Generation:} Currently building a self service platform for Automatic Medical Note Generation for Physicians using LLM (Gemini 3.1 Pro). Its a template based generation leveraging proprietary historical data.
+
+\textbf{RAG-based Medical Correction Engine}: This is a RAG based solution to automatically correct ASR drafts before they are delivered. Reduced significant manual correction efforts and improved document quality.
+
+\textbf{Finetuning STT Models with Proprietary Data}: In this engagement our goal was to create our own Med-ASR engine leveraging DHS proprietary data. Finetuned models like Gemini-1.5-Pro, Whisper and went on to reach 12\% Medical WER.
+}{
+Key projects: Medical Coding Co-pilot (SLM finetuning), Automatic Medical Note Generation (Gemini Pro), RAG-based Medical Correction Engine, and Med-ASR finetuning (12\% Medical WER).
+}
+
+\end{leftrule}
+\end{adjustwidth}
+
+
+\noindent {\textscale{1.4}{\textbf{Cloudcraftz Solutions}}} \\
+{\textsc{Kolkata, India}}
+{\hfill [\textsc{Nov '22 -- June '24}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+
+\noindent {\textscale{1.2} {\textbf{Senior Data Scientist}}} \\
+Primary responsibility was to lead and mentor a young team having diversified skills in Data Science, Quantitative Analytics and Software Engineering, and deliver complex solutions primarily for the Finance domain.
+
+\ifbool{fulldetail}{
+\textbf{Option Trading Strategy Backtest and Analytics Solution}: This Option Trading Backtest system is being used to test complex option trading strategies. The primary skills required for this project are mix of Software Engineering (SE), Financial Analytics and Data Science.
+
+\textbf{Explainable AI}: This product aimed to enhance transparency and interpretability in machine learning models using concepts like SHAP values and accumulated Local Effect (ALE) to visualize different aspects of ML models. Was involved in developing this Explainable AI product.
+
+\textbf{Data Visualization Platform: } This is a highly intuitive system providing in-depth data analysis with minimum human intervention. Lead this platform development project.
+}{
+Key projects: Option Trading Strategy Backtest and Analytics, Explainable AI (SHAP/ALE), and Data Visualization Platform.
+}
+
+\end{leftrule}
+\end{adjustwidth}
+
+
+
+\noindent {\textscale{1.4}{\textbf{Veersa Technologies}}} \\
+{\textsc{Kolkata, India}}
+{\hfill [\textsc{May '22 -- Oct 22}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+
+\noindent {\textscale{1.2} {\textbf{Data Scientist (Consulting)}}} \\
+Primary responsibility was ML model building with both tabular and image data. Other responsibilities involve data engineering, ML model productionizing, and ML team building. Executed projects in the healthcare domain.
+
+\ifbool{fulldetail}{
+\textbf{Insurance Claim Denial Prediction:} The primary target of this project is to predict whether claims submitted by the health institute will get denied or approved. Even as further analysis the reasons behind the denial are also depicted. Reducing the number of denials can have a great impact on the revenue of the health institute. Data is extracted in tabular form with relevant features and after required pre-processing that data is used as training data for the XGBoost classifier. Model accuracy was 89\% although there was further scope for improvement.
+
+\textbf{Patient Data De-Duplication:} Broken chain of information is a challenge for healthcare providers because this affects service quality and consumes storage space. The \textbf{record linkage} concept is used to solve this problem.
+
+\textbf{Disease Detection from X-Ray images:} Detecting diseases from an X-ray can lead to a significant reduction of time and manual intervention. Used ResNet34 model to achieve 84\% accuracy.
+
+\textbf{Clinical Trial Enrollment Prediction:} This was a proof of concept on the publicly available high-quality data where the target was to predict the number of people finally enrolled for a clinical trial. The prediction accuracy achieved was ~75\% but there was further scope for improvement.
+
+\textbf{Handwritten Medical Form Reader:} Digitization of handwritten medical forms is a big challenge for health service providers mainly due to varying hand-writing styles. AWS Textract is used to extract handwritten texts with high accuracy and the solution is built around the Textract output.
+}{
+Key projects: Insurance Claim Denial Prediction (XGBoost, 89\% accuracy), Patient Data De-Duplication, Disease Detection from X-Ray (ResNet34, 84\%), Clinical Trial Enrollment Prediction, and Handwritten Medical Form Reader (AWS Textract).
+}
+
+\end{leftrule}
+\end{adjustwidth}
+
+%--- Research and Training Consultancy: shown only when showresearch or showtraining is true ---
+\ifboolexpr{bool{showresearch} or bool{showtraining}}{
+\noindent {\textscale{1.4}{\textbf{Research and Training Consultancy}}} \\
+{\textsc{Kolkata, India}}
+{\hfill [\textsc{Feb '20 -- Present}]}
+
+%\vspace{.5em}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+
+\ifbool{showresearch}{
+\noindent {\textscale{1.2} {\textbf{Research Consultant}}} \\
+As a research consultant got the opportunity to handle diversified research projects. Research topics encompass Computer Vision (CV), Natural Language Processing (NLP), Data Science (DS) and more. The projects are listed below:
+
+\ifbool{fulldetail}{
+\textbf{Human Fall Detection (CV):} Working on a \textit{Human Fall Detection system}. In this project, the frame images of surveillance video cameras are used to detect the falling person. Latest \textit{Deep Learning} (DL) techniques are being evaluated for different modules. Proposed a \textit{Masked R-CNN} based \textit{semantic segmentation} model \cite{roy_2021_mrcnn} which achieved an f1-score of 94\% and IoU of 89\%. The next sub-module to develop is a \textit{human pose estimation} model.
+
+\textbf{Text Classification (NLP):} Developed a \textit{Multi-head Attention} based text classification model \cite{roy_2021_text} and achieved more than 96\% test accuracy. Compared the results with other prominent classification models such as \textit{Naive Bayes, logistic regression, random forest and multi-layer perceptron}. Looking forward to enhancing this model.
+
+\textbf{Polyp Detection (Medical Imaging):} Working on a U-Net based architecture to detect polyps in colonoscopy images. This model will be helpful in detecting cancerous polyps.
+
+\textbf{Electronic Health Record (EHR) and Process Mining:} This is a unique project where the problem is to predict the possibility of re-admission of a patient within 30-days of discharge based on the available EHR. Here the process mining concepts are used to extract features from the EHR and then deep learning sequence-to-sequence models are trained to predict re-admission possibility. Test accuracy of the model is 88\% which is encouraging keeping in view of the system complexity and novelty of the work.
+
+\indent \textbf{Face Mask Detection (CV):} Worked on a \textit{mask detection system} to detect face masks from surveillance cameras during the Covid-19 pandemic. Used \textit{MobileNet V2} and \textit{Inception ResNetV2} transfer learning model.
+
+\textbf{IoT-Edge Computing:} Prepared a PhD research proposal on an Edge computing based IoT forensic model. The proposed model consisted of modules such as \textit{online incident identification, evidence identification and management, live threat detection and forensic data reduction logic}. The modules are primarily based on deep learning architecture.
+}{
+Key research projects: Human Fall Detection (Masked R-CNN, 94\% f1-score), Text Classification (Multi-head Attention, 96\% accuracy), Polyp Detection (U-Net), EHR Process Mining (88\% accuracy), Face Mask Detection, and IoT-Edge Computing.
+}
+
+\vspace{.4cm}
+}{}
+
+\ifbool{showtraining}{
+\noindent {\textscale{1.2} {\textbf{Training Consultant}}} \\
+As a trainer, he guides aspiring AI\&ML practitioners to grasp critical concepts. Can offer different training tracks to people from various backgrounds such as students, people switching careers, people starting fresh, and people upgrading skills. He is training on a wide range of topics listed as follows:
+
+\ifbool{fulldetail}{
+\textbf{Data Science and Machine Learning} Concepts and algorithms of data visualization, statistical analysis, regression analysis, classification, clustering and time-series analysis. Provides in-depth explanation as and when required supported by suitable hands-on examples using python and R. Can explain topics at different depths depending on the audience.
+
+\textbf{Deep Learning (DL):} Theory and implementation of artificial neural networks, convolutional neural networks and recurrent neural networks to the latest \textit{attention} based models.
+
+\textbf{Python for ML and DL:} Different python libraries such as \textit{numpy, scipy, pandas, pytorch, tensorflow} as ML and DL tools. Python basics, object oriented concepts and general purpose utilities such as web programming (\textit{flask}) for ML and DL model deployment.
+
+\textbf{Practical Machine Learning (MLOps):} Building MLOPs pipeline from Packaging ML and DL models, Continuous Integration, Continuous Delivery, Publishing using web interfaces (e.g.\textit{flask}) and finally Maintenance and Reporting.
+
+\textbf{Cloud and Docker container:} AWS data toolchain from acquisition (e.g. DMS), storage (e.g. RDS), processing (e.g. EMR) and presentation (SageMaker) or modelling (Deep Learning). Creating and Running ML \& DL Docker containers.
+}{
+Training topics: Data Science \& ML, Deep Learning (ANN/CNN/RNN/Attention), Python for ML/DL, MLOps, and Cloud \& Docker.
+}
+}{}
+
+\end{leftrule}
+\end{adjustwidth}
+}{} % end of Research and Training Consultancy conditional
+
+\vspace{.2cm}
+
+%--- University of Johannesburg: shown only when showresearch is true ---
+\ifbool{showresearch}{
+\noindent
+{\textscale{1.4}{\textbf{University of Johannesburg}}} \\
+{\textsc{Johannesburg, South Africa}}
+{\hfill [\textsc{Jul '16 -- Sep '21}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+\noindent {\textscale{1.2} {\textbf{Post Doctoral Research Fellow}}}
+{\hfill [\textsc{Oct '19 -- Sep '21}]} \\
+Built a \textit{feed-forward neural network} (FNN) model \cite{roy_2021_academic} using the feature set proposed \cite{roy_2018_ieee} in his doctoral studies. Written two survey papers, one highlighting the role of emotion recognition in the context of the $4^{th}$-industrial revolution \cite{roy_wesley_2020_springer} and the other one summarizing the classification techniques in SER \cite{roy_2020_wiley}. During this tenure, he initiated two \textit{research collaborations} one with King Saud University \cite{roy_2021_mrcnn} in Riyadh, Saudi Arabia and Birla Institute of Technology and Science \cite{roy_2021_text} in Pilani, India.
+
+\vspace{.4cm}
+
+\noindent {\textscale{1.2} {\textbf{Doctoral Research Fellow}}}
+{\hfill [\textsc{Jul '16 -- Jun '19}]} \\
+Completed doctoral study on his thesis titled "Detecting emotions from speech using Machine Learning Techniques" within the stipulated three years time. Proposed a novel feature set for SER named SEGRT(\textit{subjective emotional gap reduction technique}) \cite{roy_2018_ieee, roy_2020_springer}. Also proposed a new algorithm for precise detection of speech endpoints to enhance the pre-processing of speech signals \cite{roy_2019_cnsns}.
+
+\end{leftrule}
+\end{adjustwidth}
+}{} % end of University of Johannesburg conditional
+
+\vspace{.2cm}
+
+\noindent
+{\textscale{1.4}{\textbf{SIEMENS}}} \\
+{\textsc{Kolkata, India}}
+{\hfill [{Jan '07 -- Sep '15}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+\ifbool{fulldetail}{
+\noindent {\textscale{1.2} {\textbf{Associate Consultant}}}
+{\hfill [{Jan '13 -- Sep '15}]}\\
+$\bullet$ Designed and implemented a Telecom Service Provisioning system based on a RedHat Linux multi-tiered application using Java Spring Framework. Technologies used \textit{Java Spring, Oracle}. \\
+$\bullet$ Customization of Telecom Service Provisioning system using \textit{Java, SOAP, XML, Oracle} on \textit{Linux} platform. \\
+$\bullet$ Designed and implemented CRM Service Provisioning integration module for GSM-R Billing system using \textit{Java, Oracle PL/SQL}. \\
+$\bullet$ Designed and implemented the Billing module for GSM-R Billing system using \textit{C/C++, Oracle PL/SQL} on \textit{Linux} platform.
+
+\vspace{.4cm}
+
+\noindent {\textscale{1.2} {\textbf{Sr. System Engineer}}}
+{\hfill [{Jan '11 -- Dec '12}]} \\
+$\bullet$ Designed and implemented a Charging module for the Electronic Car billing system using \textit{C/C++ and Oracle}. \\
+$\bullet$ Designed and implemented GUI based Telecom Call Analysis system. Features include Call tracking, Zone based call analysis with Graphical simulations. Used \textit{C++ based Qt} GUI Library.
+
+\vspace{.4cm}
+
+\noindent {\textscale{1.2} {\textbf{System Engineer}}}
+{\hfill [{Jan '09 -- Dec '10}]} \\
+$\bullet$ Designed and implemented Bill Printing and Bill By Email module for a Telecom Billing system. \textbf{Technologies}: Java, ProC/C++, Oracle PL/SQL. \\
+$\bullet$ Designed and implemented a Charging module for a Telecom Interconnect Billing system using Java and Oracle. \textbf{Technologies}: Java, Oracle.
+
+\vspace{.4cm}
+
+\noindent {\textscale{1.2} {\textbf{Associate System Engineer}}}
+{\hfill [{Jan '07 -- Dec '08}]} \\
+$\bullet$ Single handedly provided System Support for IVR and USSD Solution. Technologies used: \textit{Java, C++, Linux, awk script, shell script}. \\
+$\bullet$ Developed an automated monitoring system using \textit{Java, shell script, awk script} to improve client experience.
+}{
+% Brief SIEMENS: condensed role progression
+\noindent {\textscale{1.2} {\textbf{Associate Consultant}}} {\hfill [{Jan '13 -- Sep '15}]} \\
+Telecom Service Provisioning, CRM integration, and GSM-R Billing systems. Technologies: Java Spring, C/C++, Oracle PL/SQL, Linux.
+
+\vspace{.2cm}
+
+\noindent {\textscale{1.2} {\textbf{Sr. System Engineer}}} {\hfill [{Jan '11 -- Dec '12}]} \\
+Electronic Car billing (C/C++, Oracle) and Telecom Call Analysis GUI (Qt/C++).
+
+\vspace{.2cm}
+
+\noindent {\textscale{1.2} {\textbf{System Engineer}}} {\hfill [{Jan '09 -- Dec '10}]} \\
+Telecom Billing and Interconnect Charging modules. Technologies: Java, ProC/C++, Oracle.
+
+\vspace{.2cm}
+
+\noindent {\textscale{1.2} {\textbf{Associate System Engineer}}} {\hfill [{Jan '07 -- Dec '08}]} \\
+IVR/USSD system support and automated monitoring. Technologies: Java, C++, Linux, shell/awk scripts.
+}
+
+\end{leftrule}
+\end{adjustwidth}
+
+\spacedhrule{-0.4em}{0.5em} % Horizontal rule - the first bracket is whitespace before and the second is after
+
+%----------------------------------------------------------------------------------------
+%	RESEARCH EXPERTISE (conditional)
+%----------------------------------------------------------------------------------------
+
+\ifbool{showresearch}{
+\roottitle{\lighter{\textscale{1.2}{RESEARCH EXPERTISE}}}
+
+\begin{itemize}[leftmargin=1cm, itemsep=-0.1cm]
+	\item Tanmoy got attracted to research during his professional career in SIEMENS and was involved in many research oriented works. Some of his solutions are still in use.
+	\item During his PhD he proposed a novel feature set for SER \cite{roy_2018_ieee, roy_2020_springer} and a novel algorithm for speech endpoint detection which is published in a high impact journal \cite{roy_2019_cnsns}.
+	\item He is interested in interdisciplinary research where ML\&DL techniques can be applied to solve problems in other domains. He is presently working on computer vision \cite{roy_2021_mrcnn}, natural language processing \cite{roy_2021_text} and medical imaging research where the latest DL models are being used.
+	\item So far he has 8 publications with reputed publishing houses and looking forward to publishing more in an individual capacity and collaboration as well.
+\end{itemize}
+
+\spacedhrule{-0.7em}{0.5em}
+
+\roottitle{\lighter{\textscale{1.2}{RESEARCH SUPERVISION \& GUIDANCE}}}
+
+\begin{itemize}[leftmargin=1cm, itemsep=-0.1cm]
+	\item \textbf{Guiding a PhD scholar from King Saud University, Saudi Arabia}. \\
+		  Area of Research: Computer Vision \\
+		  Research Title: Detection of human fall from a surveillance camera.
+	\item \textbf{Supervising an MTech student from BITS Pilani, India.} \\
+		  Area of Research: Computer Vision \\
+		  Research Title: Visual Scene Understanding for Autonomous Vehicles.
+\end{itemize}
+
+\spacedhrule{-0.7em}{0.5em}
+}{} % end of showresearch conditional
+
+\ifbool{showtraining}{
+\roottitle{\lighter{\textscale{1.2}{TEACHING EXPERTISE}}}
+
+\textbf{Machine Learning and Data Science topics:} \\
+\vspace{-0.7cm}
+\begin{itemize}[leftmargin=1cm, itemsep=-0.2cm]
+	\item Data scaling: normalize, standard scaler, one-hot.
+	\item Data cleaning: missing value imputation, outlier detection.
+	\item Feature selection: feature importance, correlation, Covariance, t-test, F-test, $Chi^2$ test, ANOVA.
+	\item Feature extraction: PCA, LDA, ICA, SVD, NMF.
+	\item Hypothesis testing, parametric and non-parametric tests.
+	\item Regression: OLS, Ridge, Lasso, Elastic Net, Polynomial, Bayesian Ridge, SGD, Gaussian Process.
+	\item Classification: Logistic Regression, KNN, Naïve Bayes, Decision Tree, Ensemble Methods- Bagging (Random Forest), Boosting (Ada Boost, Gradient Boosting, XGBoost).
+	\item Clustering: KMeans, Hierarchical
+	\item Time-series analysis
+\end{itemize}
+
+\vspace{-0.3cm}
+
+\noindent \textbf{Deep Learning models:} ANN, CNN, RNN, LSTM, Auto-Encoders, Attention \\
+
+\vspace{-0.3cm}
+
+\noindent \textbf{Programming:} Python, C/C++, SQL, R, Java. \\
+
+\spacedhrule{-0.5em}{0.5em}
+}{} % end of showtraining conditional
+
+%----------------------------------------------------------------------------------------
+%	TECHNICAL EXPERTISE
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{TECHNICAL EXPERTISE}}}
+
+\begin{itemize}[leftmargin=1cm, itemsep=-0.1cm]
+	\item \textbf{Programming Languages:} \textit{Python, C/C++, R, Matlab, Java, JavaScript, SQL, Scala, Julia.}
+	\item \textbf{Libraries:} Few prominent python libraries are: \textit{pytorch, tensorflow, keras, theano, numpy, pandas, matplotlib, sns, scipy, opencv, nltk, flask, pyspark}.
+	\item \textbf{Technologies:} Cloud (AWS, GCP), Linux, Docker container, MLOps (KubeFLow), REST, SOAP, XML, Gradle Build.
+	\item \textbf{Databases:} RDBMS (\textit{Oracle, PostgreSQL, SQL Server, MySQL}), NoSQL (\textit{MongoDB, DynamoDB, Cassnadra}), Cloud DB (\textit{Amazon RDS}),
+	\item \textbf{Data Visualization:} Tableau
+\end{itemize}
+
+%	\item \textbf{Responsibilities and Interests:} Machine Learning and Deep Learning model prototyping and research, Programming and Design Back-End Application, Explore Emerging Technologies, Client Requirements Definition, Testing/Troubleshooting.
+
+%\end{invisible-rule}
+
+\spacedhrule{-0.2em}{0.5em} % Horizontal rule - the first bracket is whitespace before and the second is after
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{EDUCATION}}}
+
+\vspace{.2cm}
+
+\ifbool{brief}{
+% Condensed education for brief version
+\textscale{1.2} {\textbf{Doctor of Philosophy}} -- University of Johannesburg, 2019. Applied ML \& Speech Signal Processing. \\
+\vspace{.2cm}
+\noindent \textscale{1.2} {\textbf{Master of Science}} -- Lovely Professional University, 2013. Information Technology. \\
+\vspace{.2cm}
+\noindent \textscale{1.2} {\textbf{PG Diploma in Computer Applications}} -- DOEACC Society, 2004. \\
+\vspace{.2cm}
+\noindent \textscale{1.2} {\textbf{Bachelor of Science}} -- University of Calcutta, 2002. Economics(Hons), CS, Mathematics.
+}{
+% Full education
+\textscale{1.2} {\textbf{Doctor of Philosophy}} \\
+{\textsc{2019, University of Johannesburg}}
+{\hfill \textsc{Johannesburg, South Africa}} \\
+Thesis Title: Detecting Emotions From Speech Using Machine Learning Techniques. \\
+Area of research: Applied Machine Learning and Deep Learning, Speech Signal Processing.
+
+\vspace{.4cm}
+
+\noindent \textscale{1.2} {\textbf{Master of Science}} \\
+{\textsc{2013, Lovely Professional University}}
+{\hfill \textsc{Kolkata, India}} \\
+Specialization: Information Technology. \\
+Subjects: Computer Organization, Programming(C++/Java), Data Structure, \\Computer Graphics, Artificial Intelligence, System Software.
+
+\vspace{.4cm}
+
+\noindent \textscale{1.2} {\textbf{Post-Graduate Diploma in Computer Applications}} \\
+{\textsc{2004, DOEACC Society, Ministry of IT, Govt. of India.}}
+{\hfill \textsc{Kolkata, India}} \\
+Advanced Diploma in Computer Applications (A-Level).
+
+\vspace{.4cm}
+
+\noindent \textscale{1.2} {\textbf{Bachelor of Science}} \\
+{\textsc{2002, University of Calcutta}}
+{\hfill \textsc{Kolkata, India}} \\
+Economics(Hons), Computer Science, Mathematics
+}
+
+\spacedhrule{0.3em}{0.5em} % Horizontal rule - the first bracket is whitespace before and the second is after
+
+%----------------------------------------------------------------------------------------
+%	CERTIFICATES SECTION
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{CERTIFICATES}}} % Top level section
+
+\vspace{.2cm}
+
+\begin{enumerate}
+	\item {\noindent \textscale{1.13} {\textbf{Deep Learning with PyTorch : Neural Style Transfer}} \\
+	{Coursera}}
+	\item {\noindent \textscale{1.13} {\textbf{Neural Network from Scratch in TensorFlow}} \\
+			{Coursera}}
+	\item {\noindent \textscale{1.13} {\textbf{Billing and Revenue Management}} \\
+			{Oracle University}}
+	\item {\noindent \textscale{1.13} {\textbf{Diploma in Computer Networking}} \\
+			{CMC Limited}}
+\end{enumerate}
+
+\spacedhrule{-0.3em}{0.5em} % Horizontal rule - the first bracket is whitespace before and the second is after
+
+\ifbool{showpublications}{
+\roottitle{\lighter{\textscale{1.2}{PUBLICATIONS}}}
+\vspace{0.2cm}
+
+\printbibliography[heading=none]
+
+\spacedhrule{-0.5em}{0.5em}
+}{} % end of showpublications conditional
+
+%----------------------------------------------------------------------------------------
+%	SCHOLARSHIPS SECTION (conditional)
+%----------------------------------------------------------------------------------------
+
+\ifbool{showresearch}{
+\roottitle{\lighter{\textscale{1.2}{SCHOLARSHIPS}}} % Top level section
+
+\vspace{.2cm}
+
+\begin{itemize}
+	\item Received Global Excellence Stature (GES) Doctoral fellowship at the University of Johannesburg in 2016.
+	\item Received GES Post Doctoral Fellowship at the University of Johannesburg in 2019.
+\end{itemize}
+
+\spacedhrule{-0.3em}{0.5em}
+
+%----------------------------------------------------------------------------------------
+%	JOURNAL REVIEW SECTION (conditional)
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{JOURNAL REVIEWER}}} % Top level section
+
+\vspace{.2cm}
+
+\begin{itemize}
+	\item {\textscale{1.13} {\textbf{International Journal of Systems Science.}} \\
+				{Tailor and Francis}
+	}
+\end{itemize}
+
+\spacedhrule{0.2em}{0.5em}
+}{} % end of showresearch conditional (scholarships + journal reviewer)
+
+%----------------------------------------------------------------------------------------
+%	REFERENCES SECTION
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{REFERENCES}}} % Top level section
+
+\vspace{.2cm}
+
+\begin{enumerate}
+	\item {\noindent \textscale{1.13} {\textbf{Lance Mansfield}} 
+                (\href{https://www.linkedin.com/in/lancemansfield/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B5tjdC9zeQgCRX7m9TeYl0g%3D%3D}{LinkedIn}) \\
+				{Ex CTO and VP DeliverHealth Solutions} \\
+				{Mob: +1(206)384-2092} \\
+				{Email: lmansfield17@gmail.com}}
+	\item {\noindent \textscale{1.13} {\textbf{Nimish Sanghi}}
+				(\href{https://www.linkedin.com/in/nsanghi/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BAp8qlNEAToOihOUaEi5Jtg%3D%3D}{LinkedIn}) \\
+                {Founder at Cloudcraftz, SOAIS} \\
+				{Mob: +91 9880569920} \\
+				{Email: nimish.sanghi@gmail.com}}
+	\item {\noindent \textscale{1.13} {\textbf{Professor Snehashis Chakraverty}} 
+                (\href{https://www.linkedin.com/in/snehashish-chakraverty-97618432/}{LinkedIn})) \\
+				{Professor HAG, Mathematics, NIT Rourkela} \\
+				{Mob: +919438135400} \\
+				{Email: sne\_chak@yahoo.com , chakravertys@nitrkl.ac.in}}
+	
+%	\item {\noindent \textscale{1.13} {\textbf{Mr Thamer Al-Anazi}} \\
+%				{General Manager} \\
+%				{National Water Company, Riyadh, Saudi Arabia} \\
+%				{Mob: +966544222011} \\
+%				{Email: thamermatar@hotmail.com}}
+
+%	\item {\noindent \textscale{1.13} {\textbf{Dr Sukanta Nayak}} \\
+%				{Assistant Professor, Department of Mathematics} \\
+%				{VIT-AP University, Amaravati, Andhra Pradesh} \\
+%				{Mob: +919437854829, +918637291412} \\
+%				{Email: sukantgacr@gmail.com, sukanta.nayak@vitap.ac.in}}
+\end{enumerate}
+
+%\spacedhrule{0.3em}{0.5em} % Horizontal rule - the first bracket is whitespace before and the second is after
+
+\end{document}

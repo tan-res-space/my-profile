@@ -1,0 +1,67 @@
+name: Build CV PDFs
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'cv_source/**'
+      - '.github/workflows/build-cv.yml'
+  workflow_dispatch:  # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Build Detailed CV (Full)
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cv_detailed.tex
+        working_directory: cv_source/
+        latexmk_use_xelatex: false
+        args: -pdf -interaction=nonstopmode
+
+    - name: Build Industry CV
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cv_industry.tex
+        working_directory: cv_source/
+        latexmk_use_xelatex: false
+        args: -pdf -interaction=nonstopmode
+
+    - name: Build Brief CV
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cv_brief.tex
+        working_directory: cv_source/
+        latexmk_use_xelatex: false
+        args: -pdf -interaction=nonstopmode
+
+    - name: Build No-Research CV
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cv_noresearch.tex
+        working_directory: cv_source/
+        latexmk_use_xelatex: false
+        args: -pdf -interaction=nonstopmode
+
+    - name: Copy PDFs to cv_builds
+      run: |
+        mkdir -p cv_builds
+        cp cv_source/cv_detailed.pdf cv_builds/
+        cp cv_source/cv_industry.pdf cv_builds/
+        cp cv_source/cv_brief.pdf cv_builds/
+        cp cv_source/cv_noresearch.pdf cv_builds/
+
+    - name: Commit and push updated PDFs
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add cv_builds/*.pdf
+        git diff --cached --quiet || git commit -m "Auto-build CV PDFs [skip ci]"
+        git push
