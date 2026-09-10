@@ -20,6 +20,7 @@ cv_source/*.toc
 # Ruby
 Gemfile.lock
 vendor/
+.bundle/
 
 # OS
 .DS_Store
