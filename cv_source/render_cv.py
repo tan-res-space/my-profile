@@ -152,7 +152,9 @@ def render_role(role: dict[str, Any], detail: str) -> str:
                     parts.append(role["brief"].rstrip())
             else:
                 parts.append("")
+                parts.append("{")
                 parts.append(render_projects(role["projects"]))
+                parts.append("}")
         elif brief and role.get("brief"):
             parts.append(role["brief"].rstrip())
 
@@ -216,6 +218,8 @@ def render_summary(data: dict[str, Any], profile: dict[str, Any]) -> str:
     parts = [p for p in data["summaries"][key] if visible(p, tags)]
     body = "\n\n".join(p["text"].rstrip() for p in parts)
     extra = profile.get("extra_vspace_after_summary")
+    # Original summaries lived inside \ifbool groups. Ending that group before
+    # \par changes last-line justification; keep a group so spacing matches.
     lines = [
         root_title("SUMMARY"),
         "",
@@ -223,7 +227,9 @@ def render_summary(data: dict[str, Any], profile: dict[str, Any]) -> str:
         "",
         r"\noindent",
         "",
+        "{",
         body,
+        "}",
         "",
     ]
     if extra:
