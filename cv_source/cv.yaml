@@ -11,6 +11,12 @@
 #   research  — academic/research roles and sections
 #   training  — training/teaching roles and sections
 # Blocks with no tags are included in every version.
+#
+# Optional profile keys:
+#   detail_by_tag      — override detail (full/brief) per content tag
+#   education_detail   — full/brief for the education section
+#   experience_order   — employer ids to show first; remaining keep YAML order
+#   section_order      — body section ids after summary
 
 person:
   name: TANMOY ROY
@@ -50,6 +56,27 @@ profiles:
     summary: detailed
     tags: [industry]
     detail: full
+  educationist:
+    description: Teacher/educationist CV — training, supervision, and academic teaching
+    summary: educationist
+    tags: [industry, research, training]
+    detail: brief
+    detail_by_tag:
+      training: full
+    education_detail: full
+    experience_order: [research_consultancy, johannesburg]
+    pagebreak_after: [research_consultancy, veersa]
+    pagebreak_before: [education, technical_expertise]
+    section_order:
+      - experience
+      - teaching
+      - research_supervision
+      - education
+      - publications
+      - technical
+      - certificates
+      - scholarships
+      - references
 
 summaries:
   brief:
@@ -77,6 +104,13 @@ summaries:
       tags: [research]
     - text: |
         Tanmoy started his professional career in \textbf{SIEMENS} as a programmer and provided niche solutions to problems in wide-ranging projects encompassing telecommunication, electronic vehicles and smart-grid billing. His programming skills in different programming languages like C, C++, Java, SQL and his expertise in system design flourished during this tenure. He had the opportunity to be part of many complete project development life cycles and learn the craft.
+  educationist:
+    - text: |
+        Tanmoy is a PhD-qualified AI and Machine Learning \textbf{educator, trainer, and research guide} with 19+ years of experience across academia and industry. He designs and delivers training tracks for students, career-switchers, and working professionals --- covering data science, machine learning, deep learning, Python, MLOps, and cloud --- and adapts depth to the audience.
+
+        He currently works as a \textbf{Senior Data Scientist} while continuing as a \textbf{Research and Training Consultant}. He has guided a PhD scholar in computer vision, supervised an MTech student, mentored industry data-science teams, and taught applied ML through hands-on projects rather than theory alone.
+
+        His doctoral and post-doctoral research at the \textbf{University of Johannesburg} (GES fellow) was in applied machine learning and speech emotion recognition. That academic training, together with eight years as a programmer at SIEMENS and later AI roles in healthcare and finance, shapes how he teaches: research is incomplete without practical implementation.
 
 experience:
   - id: deliverhealth

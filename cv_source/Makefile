@@ -6,6 +6,7 @@
 #   make detailed   - Build full detailed CV
 #   make industry   - Build industry-focused CV
 #   make brief      - Build brief/short CV
+#   make educationist - Build teacher/educationist CV
 #   make noresearch - Build detailed CV without research/training
 #   make clean      - Remove build artifacts
 
@@ -20,7 +21,7 @@ endif
 LATEX = pdflatex
 BIBER = biber
 
-VERSIONS = detailed industry brief noresearch
+VERSIONS = detailed industry brief noresearch educationist
 PDFS = $(addsuffix .pdf,$(addprefix cv_,$(VERSIONS)))
 
 # Default target: render from YAML, then compile every version.
@@ -41,6 +42,8 @@ brief: generate
 	$(MAKE) cv_brief.pdf
 noresearch: generate
 	$(MAKE) cv_noresearch.pdf
+educationist: generate
+	$(MAKE) cv_educationist.pdf
 
 cv_%.pdf: cv_%.tex structure.tex publications.bib
 	$(LATEX) cv_$*.tex
@@ -55,4 +58,4 @@ clean:
 cleanall: clean
 	rm -f $(addsuffix .tex,$(addprefix cv_,$(VERSIONS)))
 
-.PHONY: all generate test detailed industry brief noresearch clean cleanall
+.PHONY: all generate test detailed industry brief noresearch educationist clean cleanall

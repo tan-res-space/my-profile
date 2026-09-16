@@ -23,7 +23,7 @@ my-profile/
 
 CV **content** lives in `cv_source/cv.yaml`. Layout stays in LaTeX (`structure.tex` plus a generated `.tex` file per version) so PDF quality is unchanged. `render_cv.py` turns the YAML into complete LaTeX files; GitHub Actions compiles them to PDF.
 
-Four versions ship by default. Add another by copying an entry under `profiles:` in `cv.yaml` and running `python3 render_cv.py`.
+Four versions ship by default, plus a teacher/educationist profile. Add another by copying an entry under `profiles:` in `cv.yaml` and running `python3 render_cv.py`.
 
 | Version | Profile id | Description |
 |---------|------------|-------------|
@@ -31,6 +31,7 @@ Four versions ship by default. Add another by copying an entry under `profiles:`
 | **Industry** | `industry` | Industry-focused, no academic sections |
 | **Brief** | `brief` | Concise 1-2 page version |
 | **No Research** | `noresearch` | Detailed industry roles, no research/training |
+| **Educationist** | `educationist` | Teaching, training, and research supervision first |
 
 PDFs are **automatically rebuilt** via GitHub Actions whenever files in `cv_source/` are modified. You can also trigger a manual build from the Actions tab.
 

@@ -65,6 +65,37 @@ def profile_tags(profile: dict[str, Any]) -> set[str]:
     return set(profile.get("tags") or [])
 
 
+def entry_detail(profile: dict[str, Any], item: dict[str, Any], parent: dict[str, Any] | None = None) -> str:
+    """Resolve full/brief for a role, honoring detail_by_tag.
+
+    A role's own tags win. Parent (employer) tags apply only when the role
+    has no tags of its own, so a research role on a training+research
+    employer is not forced to the training detail level.
+    """
+    by_tag = profile.get("detail_by_tag") or {}
+    own = set(item.get("tags") or [])
+    inherited = set(parent.get("tags") or []) if parent else set()
+    for tag, level in by_tag.items():
+        if tag in own:
+            return level
+    if not own:
+        for tag, level in by_tag.items():
+            if tag in inherited:
+                return level
+    return profile.get("detail", "full")
+
+
+def experience_entries(data: dict[str, Any], profile: dict[str, Any]) -> list[dict[str, Any]]:
+    items = list(data.get("experience") or [])
+    order = profile.get("experience_order") or []
+    if not order:
+        return items
+    by_id = {emp["id"]: emp for emp in items}
+    ordered = [by_id[emp_id] for emp_id in order if emp_id in by_id]
+    rest = [emp for emp in items if emp["id"] not in set(order)]
+    return ordered + rest
+
+
 def root_title(name: str) -> str:
     return rf"\roottitle{{\lighter{{\textscale{{1.2}}{{{name}}}}}}}"
 
@@ -163,12 +194,13 @@ def render_role(role: dict[str, Any], detail: str) -> str:
 
 def render_experience(data: dict[str, Any], profile: dict[str, Any]) -> str:
     tags = profile_tags(profile)
-    detail = profile.get("detail", "full")
     pagebreak_after = set(profile.get("pagebreak_after") or [])
+    pagebreak_before_tags = set(profile.get("pagebreak_before_tags") or [])
+    custom_order = bool(profile.get("experience_order"))
     chunks: list[str] = [root_title("EXPERIENCE"), "", r"\vspace{.2cm}", ""]
 
     first_visible = True
-    for emp in data["experience"]:
+    for emp in experience_entries(data, profile):
         emp_visible = visible(emp, tags)
         if emp_visible:
             emp = dict(emp)
@@ -182,6 +214,10 @@ def render_experience(data: dict[str, Any], profile: dict[str, Any]) -> str:
             chunks.append("")
             role_blocks: list[str] = []
             for i, role in enumerate(roles):
+                if set(role.get("tags") or []) & pagebreak_before_tags:
+                    role_blocks.append(r"\newpage")
+                    role_blocks.append("")
+                detail = entry_detail(profile, role, emp)
                 block = render_role(role, detail)
                 vspace = None
                 if i < len(roles) - 1 or role.get("vspace_after"):
@@ -202,7 +238,7 @@ def render_experience(data: dict[str, Any], profile: dict[str, Any]) -> str:
             chunks.append("")
 
         after = emp.get("always_after_vspace")
-        if after:
+        if after and not custom_order:
             # Original source emitted these vspaces even when the employer was hidden.
             chunks.append(rf"\vspace{{{after}}}")
             chunks.append("")
@@ -365,8 +401,11 @@ def render_technical(data: dict[str, Any], profile: dict[str, Any]) -> str:
 
 
 def render_education(data: dict[str, Any], profile: dict[str, Any]) -> str:
-    detail = profile.get("detail", "full")
-    parts = [root_title("EDUCATION"), "", r"\vspace{.2cm}", ""]
+    detail = profile.get("education_detail", profile.get("detail", "full"))
+    parts: list[str] = []
+    if "education" in (profile.get("pagebreak_before") or []):
+        parts.extend([r"\newpage", ""])
+    parts.extend([root_title("EDUCATION"), "", r"\vspace{.2cm}", ""])
     entries = data["education"]
     if detail == "brief":
         blocks = []
@@ -395,7 +434,7 @@ def render_education(data: dict[str, Any], profile: dict[str, Any]) -> str:
     return "\n".join(parts)
 
 
-def render_certificates(data: dict[str, Any]) -> str:
+def render_certificates(data: dict[str, Any], profile: dict[str, Any] | None = None) -> str:
     items = []
     for cert in data["certificates"]:
         items.append(
@@ -488,7 +527,7 @@ def render_journal_reviewer(data: dict[str, Any], profile: dict[str, Any]) -> st
     )
 
 
-def render_references(data: dict[str, Any]) -> str:
+def render_references(data: dict[str, Any], profile: dict[str, Any] | None = None) -> str:
     items = []
     for ref in data["references"]:
         items.append(
@@ -522,27 +561,50 @@ def render_references(data: dict[str, Any]) -> str:
     )
 
 
+DEFAULT_SECTIONS = [
+    "experience",
+    "research_expertise",
+    "research_supervision",
+    "teaching",
+    "technical",
+    "education",
+    "certificates",
+    "publications",
+    "scholarships",
+    "journal_reviewer",
+    "references",
+]
+
+SECTION_RENDERERS = {
+    "experience": render_experience,
+    "research_expertise": render_research_expertise,
+    "research_supervision": render_research_supervision,
+    "teaching": render_teaching,
+    "technical": render_technical,
+    "education": render_education,
+    "certificates": render_certificates,
+    "publications": render_publications,
+    "scholarships": render_scholarships,
+    "journal_reviewer": render_journal_reviewer,
+    "references": render_references,
+}
+
+
 def render_profile(data: dict[str, Any], name: str) -> str:
     profile = data["profiles"][name]
+    order = profile.get("section_order") or DEFAULT_SECTIONS
     sections = [
         PREAMBLE.rstrip(),
         "",
         render_header(data["person"]),
         render_summary(data, profile),
-        render_experience(data, profile),
-        render_research_expertise(data, profile),
-        render_research_supervision(data, profile),
-        render_teaching(data, profile),
-        render_technical(data, profile),
-        render_education(data, profile),
-        render_certificates(data),
-        render_publications(data, profile),
-        render_scholarships(data, profile),
-        render_journal_reviewer(data, profile),
-        render_references(data),
-        r"\end{document}",
-        "",
     ]
+    for key in order:
+        renderer = SECTION_RENDERERS.get(key)
+        if renderer is None:
+            raise ValueError(f"Unknown section {key!r} in profile {name}")
+        sections.append(renderer(data, profile))
+    sections.extend([r"\end{document}", ""])
     return "\n".join(section for section in sections if section)
 
 
@@ -596,6 +658,21 @@ def self_test(data: dict[str, Any]) -> None:
     must("RESEARCH EXPERTISE" not in noresearch, "noresearch should hide research sections")
     must("SIEMENS" in noresearch, "noresearch should keep SIEMENS")
     must("DeliverHealth Solutions" in noresearch, "noresearch should keep industry roles")
+
+    educationist = rendered["educationist"]
+    must("educator, trainer, and research guide" in educationist, "educationist missing tailored summary")
+    must("TEACHING EXPERTISE" in educationist, "educationist missing teaching section")
+    must("Training Consultant" in educationist, "educationist missing training role")
+    must("RESEARCH SUPERVISION" in educationist, "educationist missing supervision")
+    must("Thesis Title:" in educationist, "educationist should keep full education")
+    must("Key projects:" in educationist, "educationist should condense industry projects")
+    must("Key research projects:" in educationist, "educationist should condense research-consulting projects")
+    must("Python for ML and DL:" in educationist, "educationist should keep full training topics")
+    must("RESEARCH EXPERTISE" not in educationist, "educationist should skip standalone research-expertise list")
+    must(educationist.find("Research and Training Consultancy") < educationist.find("DeliverHealth Solutions"),
+         "educationist should lead with teaching/academic roles")
+    must(educationist.find("TEACHING EXPERTISE") < educationist.find("TECHNICAL EXPERTISE"),
+         "educationist should place teaching before technical expertise")
 
     for name, tex in rendered.items():
         must(r"\begin{document}" in tex and r"\end{document}" in tex, f"{name} is not a complete document")

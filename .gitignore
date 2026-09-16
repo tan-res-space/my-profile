@@ -5,10 +5,7 @@ _site/
 .sass-cache/
 
 # Generated from cv_source/cv.yaml — edit the YAML, not these files
-cv_source/cv_detailed.tex
-cv_source/cv_industry.tex
-cv_source/cv_brief.tex
-cv_source/cv_noresearch.tex
+cv_source/cv_*.tex
 cv_source/*.pdf
 cv_source/__pycache__/
 

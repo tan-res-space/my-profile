@@ -33,10 +33,16 @@ I maintain multiple versions of my CV tailored for different audiences. Content 
     <a href="{{ '/cv_builds/cv_noresearch.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>
   </div>
 
+  <div class="cv-card">
+    <h3>Educationist</h3>
+    <p>Teacher and trainer version. Leads with training consultancy, research supervision, and teaching expertise; industry roles are condensed.</p>
+    <a href="{{ '/cv_builds/cv_educationist.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>
+  </div>
+
 </div>
 
 ---
 
 ### How it works
 
-The CV source lives in `cv_source/cv.yaml`. Each named profile under `profiles` (detailed, industry, brief, noresearch) selects which tagged sections and which summary to include. A small Python renderer writes a complete `.tex` file per profile; GitHub Actions compiles those files to PDF so layout stays in LaTeX.
+The CV source lives in `cv_source/cv.yaml`. Each named profile under `profiles` selects which tagged sections and which summary to include. A small Python renderer writes a complete `.tex` file per profile; GitHub Actions compiles those files to PDF so layout stays in LaTeX.

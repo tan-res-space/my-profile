@@ -61,6 +61,14 @@ jobs:
         latexmk_use_xelatex: false
         args: -pdf -interaction=nonstopmode
 
+    - name: Build Educationist CV
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cv_educationist.tex
+        working_directory: cv_source/
+        latexmk_use_xelatex: false
+        args: -pdf -interaction=nonstopmode
+
     - name: Copy PDFs to cv_builds
       run: |
         mkdir -p cv_builds
