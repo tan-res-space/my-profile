@@ -4,6 +4,11 @@ _site/
 .jekyll-metadata
 .sass-cache/
 
+# Generated from cv_source/cv.yaml — edit the YAML, not these files
+cv_source/cv_*.tex
+cv_source/*.pdf
+cv_source/__pycache__/
+
 # LaTeX build artifacts
 cv_source/*.aux
 cv_source/*.bbl

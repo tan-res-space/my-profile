@@ -1,0 +1,436 @@
+# Single source of truth for all CV versions.
+#
+# To add a new version:
+#   1. Copy an entry under `profiles` and give it a new id (filename becomes cv_<id>.tex).
+#   2. Set `summary` (a key in `summaries`), `tags` (which tagged blocks to include),
+#      and `detail` (`full` or `brief`).
+#   3. Run: python3 render_cv.py
+#
+# Tags used on content blocks:
+#   industry  — industry roles (always included in current profiles)
+#   research  — academic/research roles and sections
+#   training  — training/teaching roles and sections
+# Blocks with no tags are included in every version.
+#
+# Optional profile keys:
+#   detail_by_tag      — override detail (full/brief) per content tag
+#   education_detail   — full/brief for the education section
+#   experience_order   — employer ids to show first; remaining keep YAML order
+#   section_order      — body section ids after summary
+
+person:
+  name: TANMOY ROY
+  subtitle: PhD
+  location: Kolkata, India
+  email: tanmoy.main@gmail.com
+  phones:
+    - "(+91)7003135175"
+    - "9830345901"
+  links:
+    - label: LinkedIn
+      url: "https://www.linkedin.com/in/tanmoy-roy-328b592b/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2Bwjs%2BswgSimn1FfyeypNYw%3D%3D"
+    - label: Google Scholar
+      url: "https://scholar.google.com/citations?user=FweJmHYAAAAJ&hl=en"
+
+profiles:
+  detailed:
+    description: Full CV with all sections
+    summary: detailed
+    tags: [industry, research, training]
+    detail: full
+  industry:
+    description: Industry-focused, no academic sections
+    summary: industry
+    tags: [industry]
+    detail: full
+    extra_vspace_after_summary: 0.3cm
+    pagebreak_after: [cloudcraftz]
+    pagebreak_before: [technical_expertise]
+  brief:
+    description: Concise 1-2 page version with condensed descriptions
+    summary: brief
+    tags: [industry]
+    detail: brief
+  noresearch:
+    description: Full industry detail without research or training
+    summary: detailed
+    tags: [industry]
+    detail: full
+  educationist:
+    description: Teacher/educationist CV — training, supervision, and academic teaching
+    summary: educationist
+    tags: [industry, research, training]
+    detail: brief
+    detail_by_tag:
+      training: full
+    education_detail: full
+    experience_order: [research_consultancy, johannesburg]
+    pagebreak_after: [research_consultancy, veersa]
+    pagebreak_before: [education, technical_expertise]
+    section_order:
+      - experience
+      - teaching
+      - research_supervision
+      - education
+      - publications
+      - technical
+      - certificates
+      - scholarships
+      - references
+
+summaries:
+  brief:
+    - text: >
+        AI and Machine Learning professional with 19+ years of experience across
+        industry and academia. PhD in Speech Emotion Recognition from University of
+        Johannesburg. Currently Senior Data Scientist at DeliverHealth Solutions,
+        leading AI-driven healthcare solutions including Medical Coding Co-pilot and
+        Automatic Medical Note Generation. Prior experience at SIEMENS (8+ years) in
+        telecom and smart-grid systems using C/C++, Java, and Oracle.
+  industry:
+    - text: |
+        Tanmoy is an AI and Machine Learning (ML) professional with 19+ years of experience delivering impactful solutions across healthcare, finance, and telecom domains. He holds a \textbf{PhD} in Applied Machine Learning from the University of Johannesburg.
+
+        Presently he is a \textbf{Senior Data Scientist} at DeliverHealth Solutions where his primary responsibility is \textbf{AI and ML} solutioning and research. He collaborates with cross-functional stakeholders including Google and Microsoft to design and implement scalable AI solutions. His work area encompasses \textit{STT, RAG, AI Model Finetuning, NLP, Computer Vision}.
+
+        Tanmoy started his professional career in \textbf{SIEMENS} as a programmer and provided niche solutions to problems in wide-ranging projects encompassing telecommunication, electronic vehicles and smart-grid billing.
+  detailed:
+    - text: |
+        Tanmoy is an AI and Machine Learning (ML) Consultant, Coach, Research Scholar, Experienced Programmer and Freelance Research Guide. He perceived that research is incomplete without practical implementation based on his diversified experience in the industry as well as in academia and
+    - text: |
+        Presently he is a Senior Data-Scientist where his primary responsibility is \textbf{AI and ML} solutioning and team building. He also guides researchers of AI and ML fields and provides training to aspiring AI and ML practitioners. His work area encompasses \textit{speech processing, medical data processing, computer vision, natural language processing, medical imaging, and IoT-Edge computing}.
+    - text: |
+        During \textbf{PhD}, his primary research interest was \textbf{speech emotion recognition} (SER), on which he has a few peer-reviewed publications. Notably, he proposed a novel feature set for SER and proposed a novel algorithm for speech endpoint detection. Tanmoy received the \textit{Global Excellence Stature} (GES) scholarship from the \textbf{University of Johannesburg} (UJ) to pursue doctoral research and completed his PhD in the stipulated three years. After PhD he joined UJ as a \textbf{post-doctoral research fellow} under the GES fellowship.
+      tags: [research]
+    - text: |
+        Tanmoy started his professional career in \textbf{SIEMENS} as a programmer and provided niche solutions to problems in wide-ranging projects encompassing telecommunication, electronic vehicles and smart-grid billing. His programming skills in different programming languages like C, C++, Java, SQL and his expertise in system design flourished during this tenure. He had the opportunity to be part of many complete project development life cycles and learn the craft.
+  educationist:
+    - text: |
+        Tanmoy is a PhD-qualified AI and Machine Learning \textbf{educator, trainer, and research guide} with 19+ years of experience across academia and industry. He designs and delivers training tracks for students, career-switchers, and working professionals --- covering data science, machine learning, deep learning, Python, MLOps, and cloud --- and adapts depth to the audience.
+
+        He currently works as a \textbf{Senior Data Scientist} while continuing as a \textbf{Research and Training Consultant}. He has guided a PhD scholar in computer vision, supervised an MTech student, mentored industry data-science teams, and taught applied ML through hands-on projects rather than theory alone.
+
+        His doctoral and post-doctoral research at the \textbf{University of Johannesburg} (GES fellow) was in applied machine learning and speech emotion recognition. That academic training, together with eight years as a programmer at SIEMENS and later AI roles in healthcare and finance, shapes how he teaches: research is incomplete without practical implementation.
+
+experience:
+  - id: deliverhealth
+    company: DeliverHealth Solutions
+    location: Remote, India
+    dates: "July '24 -- Present"
+    tags: [industry]
+    roles:
+      - title: Senior Data Scientist
+        intro: |
+          Led research and development for AI-driven product and solution ideation, driving organization-wide AI adoption initiatives. \\
+          Collaborated with cross-functional stakeholders, including Product Owners and partners such as Google and Microsoft, to design and deploy scalable AI solutions addressing critical business challenges.
+        brief: "Key projects: Medical Coding Co-pilot (SLM finetuning), Automatic Medical Note Generation (Gemini Pro), RAG-based Medical Correction Engine, and Med-ASR finetuning (12\\% Medical WER)."
+        projects:
+          - name: Medical Coding Co-pilot
+            colon: inside
+            text: System to assist human coders so that the time to code a single document can be significantly reduced. Here, we are leveraging proprietary historical data to finetune a Small Language Model in a continuous learning loop.
+          - name: Automatic Medical Note Generation
+            colon: inside
+            text: Currently building a self service platform for Automatic Medical Note Generation for Physicians using LLM (Gemini 3.1 Pro). Its a template based generation leveraging proprietary historical data.
+          - name: RAG-based Medical Correction Engine
+            colon: outside
+            text: This is a RAG based solution to automatically correct ASR drafts before they are delivered. Reduced significant manual correction efforts and improved document quality.
+          - name: Finetuning STT Models with Proprietary Data
+            colon: outside
+            text: In this engagement our goal was to create our own Med-ASR engine leveraging DHS proprietary data. Finetuned models like Gemini-1.5-Pro, Whisper and went on to reach 12\% Medical WER.
+
+  - id: cloudcraftz
+    company: Cloudcraftz Solutions
+    location: Kolkata, India
+    dates: "Nov '22 -- June '24"
+    tags: [industry]
+    roles:
+      - title: Senior Data Scientist
+        intro: |
+          Primary responsibility was to lead and mentor a young team having diversified skills in Data Science, Quantitative Analytics and Software Engineering, and deliver complex solutions primarily for the Finance domain.
+        brief: "Key projects: Option Trading Strategy Backtest and Analytics, Explainable AI (SHAP/ALE), and Data Visualization Platform."
+        projects:
+          - name: Option Trading Strategy Backtest and Analytics Solution
+            colon: outside
+            text: This Option Trading Backtest system is being used to test complex option trading strategies. The primary skills required for this project are mix of Software Engineering (SE), Financial Analytics and Data Science.
+          - name: Explainable AI
+            colon: outside
+            text: This product aimed to enhance transparency and interpretability in machine learning models using concepts like SHAP values and accumulated Local Effect (ALE) to visualize different aspects of ML models. Was involved in developing this Explainable AI product.
+          - name: Data Visualization Platform
+            colon: inside_space
+            text: This is a highly intuitive system providing in-depth data analysis with minimum human intervention. Lead this platform development project.
+
+  - id: veersa
+    company: Veersa Technologies
+    location: Kolkata, India
+    dates: "May '22 -- Oct 22"
+    tags: [industry]
+    roles:
+      - title: Data Scientist (Consulting)
+        intro: |
+          Primary responsibility was ML model building with both tabular and image data. Other responsibilities involve data engineering, ML model productionizing, and ML team building. Executed projects in the healthcare domain.
+        brief: "Key projects: Insurance Claim Denial Prediction (XGBoost, 89\\% accuracy), Patient Data De-Duplication, Disease Detection from X-Ray (ResNet34, 84\\%), Clinical Trial Enrollment Prediction, and Handwritten Medical Form Reader (AWS Textract)."
+        projects:
+          - name: Insurance Claim Denial Prediction
+            colon: inside
+            text: The primary target of this project is to predict whether claims submitted by the health institute will get denied or approved. Even as further analysis the reasons behind the denial are also depicted. Reducing the number of denials can have a great impact on the revenue of the health institute. Data is extracted in tabular form with relevant features and after required pre-processing that data is used as training data for the XGBoost classifier. Model accuracy was 89\% although there was further scope for improvement.
+          - name: Patient Data De-Duplication
+            colon: inside
+            text: Broken chain of information is a challenge for healthcare providers because this affects service quality and consumes storage space. The \textbf{record linkage} concept is used to solve this problem.
+          - name: Disease Detection from X-Ray images
+            colon: inside
+            text: Detecting diseases from an X-ray can lead to a significant reduction of time and manual intervention. Used ResNet34 model to achieve 84\% accuracy.
+          - name: Clinical Trial Enrollment Prediction
+            colon: inside
+            text: This was a proof of concept on the publicly available high-quality data where the target was to predict the number of people finally enrolled for a clinical trial. The prediction accuracy achieved was ~75\% but there was further scope for improvement.
+          - name: Handwritten Medical Form Reader
+            colon: inside
+            text: Digitization of handwritten medical forms is a big challenge for health service providers mainly due to varying hand-writing styles. AWS Textract is used to extract handwritten texts with high accuracy and the solution is built around the Textract output.
+
+  - id: research_consultancy
+    company: Research and Training Consultancy
+    location: Kolkata, India
+    dates: "Feb '20 -- Present"
+    tags: [research, training]
+    always_after_vspace: 0.2cm
+    roles:
+      - title: Research Consultant
+        tags: [research]
+        vspace_after: 0.4cm
+        intro: |
+          As a research consultant got the opportunity to handle diversified research projects. Research topics encompass Computer Vision (CV), Natural Language Processing (NLP), Data Science (DS) and more. The projects are listed below:
+        brief: "Key research projects: Human Fall Detection (Masked R-CNN, 94\\% f1-score), Text Classification (Multi-head Attention, 96\\% accuracy), Polyp Detection (U-Net), EHR Process Mining (88\\% accuracy), Face Mask Detection, and IoT-Edge Computing."
+        projects:
+          - name: Human Fall Detection (CV)
+            colon: inside
+            text: Working on a \textit{Human Fall Detection system}. In this project, the frame images of surveillance video cameras are used to detect the falling person. Latest \textit{Deep Learning} (DL) techniques are being evaluated for different modules. Proposed a \textit{Masked R-CNN} based \textit{semantic segmentation} model \cite{roy_2021_mrcnn} which achieved an f1-score of 94\% and IoU of 89\%. The next sub-module to develop is a \textit{human pose estimation} model.
+          - name: Text Classification (NLP)
+            colon: inside
+            text: Developed a \textit{Multi-head Attention} based text classification model \cite{roy_2021_text} and achieved more than 96\% test accuracy. Compared the results with other prominent classification models such as \textit{Naive Bayes, logistic regression, random forest and multi-layer perceptron}. Looking forward to enhancing this model.
+          - name: Polyp Detection (Medical Imaging)
+            colon: inside
+            text: Working on a U-Net based architecture to detect polyps in colonoscopy images. This model will be helpful in detecting cancerous polyps.
+          - name: Electronic Health Record (EHR) and Process Mining
+            colon: inside
+            text: This is a unique project where the problem is to predict the possibility of re-admission of a patient within 30-days of discharge based on the available EHR. Here the process mining concepts are used to extract features from the EHR and then deep learning sequence-to-sequence models are trained to predict re-admission possibility. Test accuracy of the model is 88\% which is encouraging keeping in view of the system complexity and novelty of the work.
+          - name: Face Mask Detection (CV)
+            colon: inside
+            indent: true
+            text: Worked on a \textit{mask detection system} to detect face masks from surveillance cameras during the Covid-19 pandemic. Used \textit{MobileNet V2} and \textit{Inception ResNetV2} transfer learning model.
+          - name: IoT-Edge Computing
+            colon: inside
+            text: Prepared a PhD research proposal on an Edge computing based IoT forensic model. The proposed model consisted of modules such as \textit{online incident identification, evidence identification and management, live threat detection and forensic data reduction logic}. The modules are primarily based on deep learning architecture.
+      - title: Training Consultant
+        tags: [training]
+        intro: |
+          As a trainer, he guides aspiring AI\&ML practitioners to grasp critical concepts. Can offer different training tracks to people from various backgrounds such as students, people switching careers, people starting fresh, and people upgrading skills. He is training on a wide range of topics listed as follows:
+        brief: "Training topics: Data Science \\& ML, Deep Learning (ANN/CNN/RNN/Attention), Python for ML/DL, MLOps, and Cloud \\& Docker."
+        projects:
+          - name: Data Science and Machine Learning
+            colon: none
+            text: Concepts and algorithms of data visualization, statistical analysis, regression analysis, classification, clustering and time-series analysis. Provides in-depth explanation as and when required supported by suitable hands-on examples using python and R. Can explain topics at different depths depending on the audience.
+          - name: Deep Learning (DL)
+            colon: inside
+            text: Theory and implementation of artificial neural networks, convolutional neural networks and recurrent neural networks to the latest \textit{attention} based models.
+          - name: Python for ML and DL
+            colon: inside
+            text: Different python libraries such as \textit{numpy, scipy, pandas, pytorch, tensorflow} as ML and DL tools. Python basics, object oriented concepts and general purpose utilities such as web programming (\textit{flask}) for ML and DL model deployment.
+          - name: Practical Machine Learning (MLOps)
+            colon: inside
+            text: Building MLOPs pipeline from Packaging ML and DL models, Continuous Integration, Continuous Delivery, Publishing using web interfaces (e.g.\textit{flask}) and finally Maintenance and Reporting.
+          - name: Cloud and Docker container
+            colon: inside
+            text: AWS data toolchain from acquisition (e.g. DMS), storage (e.g. RDS), processing (e.g. EMR) and presentation (SageMaker) or modelling (Deep Learning). Creating and Running ML \& DL Docker containers.
+
+  - id: johannesburg
+    company: University of Johannesburg
+    location: Johannesburg, South Africa
+    dates: "Jul '16 -- Sep '21"
+    tags: [research]
+    leading_noindent: true
+    always_after_vspace: 0.2cm
+    roles:
+      - title: Post Doctoral Research Fellow
+        dates: "Oct '19 -- Sep '21"
+        vspace_after: 0.4cm
+        intro: |
+          Built a \textit{feed-forward neural network} (FNN) model \cite{roy_2021_academic} using the feature set proposed \cite{roy_2018_ieee} in his doctoral studies. Written two survey papers, one highlighting the role of emotion recognition in the context of the $4^{th}$-industrial revolution \cite{roy_wesley_2020_springer} and the other one summarizing the classification techniques in SER \cite{roy_2020_wiley}. During this tenure, he initiated two \textit{research collaborations} one with King Saud University \cite{roy_2021_mrcnn} in Riyadh, Saudi Arabia and Birla Institute of Technology and Science \cite{roy_2021_text} in Pilani, India.
+      - title: Doctoral Research Fellow
+        dates: "Jul '16 -- Jun '19"
+        intro: |
+          Completed doctoral study on his thesis titled "Detecting emotions from speech using Machine Learning Techniques" within the stipulated three years time. Proposed a novel feature set for SER named SEGRT(\textit{subjective emotional gap reduction technique}) \cite{roy_2018_ieee, roy_2020_springer}. Also proposed a new algorithm for precise detection of speech endpoints to enhance the pre-processing of speech signals \cite{roy_2019_cnsns}.
+
+  - id: siemens
+    company: SIEMENS
+    location: Kolkata, India
+    dates: "Jan '07 -- Sep '15"
+    dates_textsc: false
+    tags: [industry]
+    leading_noindent: true
+    roles:
+      - title: Associate Consultant
+        dates: "Jan '13 -- Sep '15"
+        dates_textsc: false
+        vspace_after: 0.4cm
+        vspace_after_brief: 0.2cm
+        brief: "Telecom Service Provisioning, CRM integration, and GSM-R Billing systems. Technologies: Java Spring, C/C++, Oracle PL/SQL, Linux."
+        bullets:
+          - Designed and implemented a Telecom Service Provisioning system based on a RedHat Linux multi-tiered application using Java Spring Framework. Technologies used \textit{Java Spring, Oracle}.
+          - Customization of Telecom Service Provisioning system using \textit{Java, SOAP, XML, Oracle} on \textit{Linux} platform.
+          - Designed and implemented CRM Service Provisioning integration module for GSM-R Billing system using \textit{Java, Oracle PL/SQL}.
+          - Designed and implemented the Billing module for GSM-R Billing system using \textit{C/C++, Oracle PL/SQL} on \textit{Linux} platform.
+      - title: Sr. System Engineer
+        dates: "Jan '11 -- Dec '12"
+        dates_textsc: false
+        vspace_after: 0.4cm
+        vspace_after_brief: 0.2cm
+        brief: "Electronic Car billing (C/C++, Oracle) and Telecom Call Analysis GUI (Qt/C++)."
+        bullets:
+          - Designed and implemented a Charging module for the Electronic Car billing system using \textit{C/C++ and Oracle}.
+          - Designed and implemented GUI based Telecom Call Analysis system. Features include Call tracking, Zone based call analysis with Graphical simulations. Used \textit{C++ based Qt} GUI Library.
+      - title: System Engineer
+        dates: "Jan '09 -- Dec '10"
+        dates_textsc: false
+        vspace_after: 0.4cm
+        vspace_after_brief: 0.2cm
+        brief: "Telecom Billing and Interconnect Charging modules. Technologies: Java, ProC/C++, Oracle."
+        bullets:
+          - "Designed and implemented Bill Printing and Bill By Email module for a Telecom Billing system. \\textbf{Technologies}: Java, ProC/C++, Oracle PL/SQL."
+          - "Designed and implemented a Charging module for a Telecom Interconnect Billing system using Java and Oracle. \\textbf{Technologies}: Java, Oracle."
+      - title: Associate System Engineer
+        dates: "Jan '07 -- Dec '08"
+        dates_textsc: false
+        brief: "IVR/USSD system support and automated monitoring. Technologies: Java, C++, Linux, shell/awk scripts."
+        bullets:
+          - "Single handedly provided System Support for IVR and USSD Solution. Technologies used: \\textit{Java, C++, Linux, awk script, shell script}."
+          - Developed an automated monitoring system using \textit{Java, shell script, awk script} to improve client experience.
+
+research_expertise:
+  tags: [research]
+  items:
+    - Tanmoy got attracted to research during his professional career in SIEMENS and was involved in many research oriented works. Some of his solutions are still in use.
+    - During his PhD he proposed a novel feature set for SER \cite{roy_2018_ieee, roy_2020_springer} and a novel algorithm for speech endpoint detection which is published in a high impact journal \cite{roy_2019_cnsns}.
+    - "He is interested in interdisciplinary research where ML\\&DL techniques can be applied to solve problems in other domains. He is presently working on computer vision \\cite{roy_2021_mrcnn}, natural language processing \\cite{roy_2021_text} and medical imaging research where the latest DL models are being used."
+    - So far he has 8 publications with reputed publishing houses and looking forward to publishing more in an individual capacity and collaboration as well.
+
+research_supervision:
+  tags: [research]
+  items:
+    - heading: Guiding a PhD scholar from King Saud University, Saudi Arabia
+      after: "."
+      lines:
+        - "Area of Research: Computer Vision"
+        - "Research Title: Detection of human fall from a surveillance camera."
+    - heading: Supervising an MTech student from BITS Pilani, India.
+      lines:
+        - "Area of Research: Computer Vision"
+        - "Research Title: Visual Scene Understanding for Autonomous Vehicles."
+
+teaching_expertise:
+  tags: [training]
+  groups:
+    - heading: "Machine Learning and Data Science topics:"
+      style: list
+      items:
+        - "Data scaling: normalize, standard scaler, one-hot."
+        - "Data cleaning: missing value imputation, outlier detection."
+        - "Feature selection: feature importance, correlation, Covariance, t-test, F-test, $Chi^2$ test, ANOVA."
+        - "Feature extraction: PCA, LDA, ICA, SVD, NMF."
+        - Hypothesis testing, parametric and non-parametric tests.
+        - "Regression: OLS, Ridge, Lasso, Elastic Net, Polynomial, Bayesian Ridge, SGD, Gaussian Process."
+        - "Classification: Logistic Regression, KNN, Naïve Bayes, Decision Tree, Ensemble Methods- Bagging (Random Forest), Boosting (Ada Boost, Gradient Boosting, XGBoost)."
+        - "Clustering: KMeans, Hierarchical"
+        - Time-series analysis
+    - heading: "Deep Learning models:"
+      style: inline
+      text: ANN, CNN, RNN, LSTM, Auto-Encoders, Attention
+    - heading: "Programming:"
+      style: inline
+      text: Python, C/C++, SQL, R, Java.
+
+technical_expertise:
+  items:
+    - heading: "Programming Languages:"
+      text: Python, C/C++, R, Matlab, Java, JavaScript, SQL, Scala, Julia.
+    - heading: "Libraries:"
+      text: "Few prominent python libraries are: ollama, langchain, langgraph, unsloth, pytorch, pandas, matplotlib, scipy, opencv, pyspark."
+    - heading: "Technologies/Platforms:"
+      text: Cloud (AWS, GCP), Linux, Docker container, MLOps (KubeFLow), REST, SOAP, XML.
+    - heading: "Databases:"
+      text: RDBMS (Oracle, PostgreSQL, SQL Server, MySQL), NoSQL (MongoDB, DynamoDB, Cassnadra), Cloud DB (Amazon RDS).
+
+education:
+  - degree: Doctor of Philosophy
+    year: "2019"
+    institution: University of Johannesburg
+    location: Johannesburg, South Africa
+    brief: "Doctor of Philosophy -- University of Johannesburg, 2019. Applied ML \\& Speech Signal Processing."
+    details:
+      - "Thesis Title: Detecting Emotions From Speech Using Machine Learning Techniques."
+      - "Area of research: Applied Machine Learning and Deep Learning, Speech Signal Processing."
+  - degree: Master of Science
+    year: "2013"
+    institution: Lovely Professional University
+    location: Kolkata, India
+    brief: "Master of Science -- Lovely Professional University, 2013. Information Technology."
+    details:
+      - "Specialization: Information Technology."
+      - "Subjects: Computer Organization, Programming(C++/Java), Data Structure, \\\\Computer Graphics, Artificial Intelligence, System Software."
+  - degree: Post-Graduate Diploma in Computer Applications
+    degree_brief: PG Diploma in Computer Applications
+    year: "2004"
+    institution: DOEACC Society, Ministry of IT, Govt. of India.
+    institution_brief: DOEACC Society
+    location: Kolkata, India
+    brief: "PG Diploma in Computer Applications -- DOEACC Society, 2004."
+    details:
+      - Advanced Diploma in Computer Applications (A-Level).
+  - degree: Bachelor of Science
+    year: "2002"
+    institution: University of Calcutta
+    location: Kolkata, India
+    brief: "Bachelor of Science -- University of Calcutta, 2002. Economics(Hons), CS, Mathematics."
+    details:
+      - Economics(Hons), Computer Science, Mathematics
+
+certificates:
+  - title: "Deep Learning with PyTorch : Neural Style Transfer"
+    issuer: Coursera
+  - title: Neural Network from Scratch in TensorFlow
+    issuer: Coursera
+  - title: Billing and Revenue Management
+    issuer: Oracle University
+  - title: Diploma in Computer Networking
+    issuer: CMC Limited
+
+publications:
+  tags: [research]
+  bib_resource: publications.bib
+
+scholarships:
+  tags: [research]
+  items:
+    - Received Global Excellence Stature (GES) Doctoral fellowship at the University of Johannesburg in 2016.
+    - Received GES Post Doctoral Fellowship at the University of Johannesburg in 2019.
+
+journal_reviewer:
+  tags: [research]
+  items:
+    - title: International Journal of Systems Science.
+      publisher: Tailor and Francis
+
+references:
+  - name: Lance Mansfield
+    linkedin: "https://www.linkedin.com/in/lancemansfield/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B5tjdC9zeQgCRX7m9TeYl0g%3D%3D"
+    title: Ex CTO and VP DeliverHealth Solutions
+    phone: "+1(206)384-2092"
+    email: lmansfield17@gmail.com
+  - name: Nimish Sanghi
+    linkedin: "https://www.linkedin.com/in/nsanghi/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BAp8qlNEAToOihOUaEi5Jtg%3D%3D"
+    title: Founder at Cloudcraftz, SOAIS
+    phone: "+91 9880569920"
+    email: nimish.sanghi@gmail.com
+  - name: Professor Snehashis Chakraverty
+    linkedin: "https://www.linkedin.com/in/snehashish-chakraverty-97618432/"
+    title: Professor HAG, Mathematics, NIT Rourkela
+    phone: "+919438135400"
+    email: "sne\\_chak@yahoo.com , chakravertys@nitrkl.ac.in"

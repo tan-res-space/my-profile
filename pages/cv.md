@@ -5,7 +5,7 @@ subtitle: Download my CV in the format that best suits your needs.
 permalink: /pages/cv/
 ---
 
-I maintain multiple versions of my CV tailored for different audiences. All versions are auto-built from a single LaTeX source using GitHub Actions.
+I maintain multiple versions of my CV tailored for different audiences. Content is stored in YAML and typeset with LaTeX; GitHub Actions rebuilds every PDF from that single source.
 
 <div class="cv-grid">
 
@@ -33,10 +33,16 @@ I maintain multiple versions of my CV tailored for different audiences. All vers
     <a href="{{ '/cv_builds/cv_noresearch.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>
   </div>
 
+  <div class="cv-card">
+    <h3>Educationist</h3>
+    <p>Teacher and trainer version. Leads with training consultancy, research supervision, and teaching expertise; industry roles are condensed.</p>
+    <a href="{{ '/cv_builds/cv_educationist.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>
+  </div>
+
 </div>
 
 ---
 
 ### How it works
 
-The CV source lives in a single LaTeX file (`cv_detailed.tex`) with conditional compilation flags. Each version is a thin driver file that sets one flag and compiles the same source, ensuring all versions stay in sync. A GitHub Actions workflow automatically rebuilds all PDFs whenever the LaTeX source is updated.
+The CV source lives in `cv_source/cv.yaml`. Each named profile under `profiles` selects which tagged sections and which summary to include. A small Python renderer writes a complete `.tex` file per profile; GitHub Actions compiles those files to PDF so layout stays in LaTeX.
