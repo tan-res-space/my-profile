@@ -165,9 +165,13 @@ def render_experience(data: dict[str, Any], profile: dict[str, Any]) -> str:
     pagebreak_after = set(profile.get("pagebreak_after") or [])
     chunks: list[str] = [root_title("EXPERIENCE"), "", r"\vspace{.2cm}", ""]
 
+    first_visible = True
     for emp in data["experience"]:
         emp_visible = visible(emp, tags)
         if emp_visible:
+            emp = dict(emp)
+            emp["leading_noindent"] = not first_visible
+            first_visible = False
             roles = [role for role in emp.get("roles", []) if visible(role, tags)]
             chunks.append(company_header(emp))
             chunks.append("")
@@ -196,7 +200,7 @@ def render_experience(data: dict[str, Any], profile: dict[str, Any]) -> str:
             chunks.append("")
 
         after = emp.get("always_after_vspace")
-        if after and (emp_visible or True):
+        if after:
             # Original source emitted these vspaces even when the employer was hidden.
             chunks.append(rf"\vspace{{{after}}}")
             chunks.append("")
@@ -286,7 +290,9 @@ def render_research_supervision(data: dict[str, Any], profile: dict[str, Any]) -
     rendered = []
     for item in section["items"]:
         body = " \\\\\n\t\t  ".join(item["lines"])
-        rendered.append(f"\t\\item \\textbf{{{item['heading']}}} \\\\\n\t\t  {body}")
+        rendered.append(
+            f"\t\\item \\textbf{{{item['heading']}}}{item.get('after', '')} \\\\\n\t\t  {body}"
+        )
     list_body = (
         "\\begin{itemize}[leftmargin=1cm, itemsep=-0.1cm]\n"
         + "\n".join(rendered)
@@ -362,8 +368,9 @@ def render_education(data: dict[str, Any], profile: dict[str, Any]) -> str:
             prefix = "" if i == 0 else r"\noindent "
             degree = edu.get("degree_brief", edu["degree"])
             rest = edu["brief"].split(" -- ", 1)[1]
+            suffix = r" \\" if i < len(entries) - 1 else ""
             blocks.append(
-                f"{prefix}\\textscale{{1.2}} {{\\textbf{{{degree}}}}} -- {rest} \\\\"
+                f"{prefix}\\textscale{{1.2}} {{\\textbf{{{degree}}}}} -- {rest}{suffix}"
             )
         parts.append("\n\\vspace{.2cm}\n".join(blocks))
     else:
@@ -530,7 +537,7 @@ def render_profile(data: dict[str, Any], name: str) -> str:
         r"\end{document}",
         "",
     ]
-    return "\n".join(section for section in sections if section is not None)
+    return "\n".join(section for section in sections if section)
 
 
 def write_all(data: dict[str, Any], out_dir: Path) -> list[Path]:
@@ -557,6 +564,7 @@ def self_test(data: dict[str, Any]) -> None:
     must(r"\printbibliography" in detailed, "detailed missing publications")
     must("University of Johannesburg" in detailed, "detailed missing UJ")
     must("speech emotion recognition" in detailed, "detailed missing PhD paragraph")
+    must("Saudi Arabia}." in detailed, "research supervision should keep the original period")
     must("Medical Coding Co-pilot:" in detailed, "detailed missing full project")
     must(
         r"\textbf{Senior Data Scientist}}} \\" in detailed,

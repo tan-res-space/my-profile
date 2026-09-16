@@ -282,6 +282,7 @@ research_supervision:
   tags: [research]
   items:
     - heading: Guiding a PhD scholar from King Saud University, Saudi Arabia
+      after: "."
       lines:
         - "Area of Research: Computer Vision"
         - "Research Title: Detection of human fall from a surveillance camera."
