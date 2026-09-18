@@ -57,6 +57,7 @@ jobs:
         cp cv_source/cv_industry.pdf cv_builds/
         cp cv_source/cv_brief.pdf cv_builds/
         cp cv_source/cv_noresearch.pdf cv_builds/
+        cp cv_source/cv_industry.pdf cv_builds/cv_tanmoy.pdf
 
     - name: Commit and push updated PDFs
       run: |

@@ -56,7 +56,12 @@ clean:
 	rm -f *.aux *.bbl *.bcf *.blg *.log *.out *.run.xml *.toc
 	rm -f cv_industry.pdf cv_brief.pdf cv_noresearch.pdf
 
+install: all
+	mkdir -p ../cv_builds
+	cp cv_detailed.pdf cv_industry.pdf cv_brief.pdf cv_noresearch.pdf ../cv_builds/
+	cp cv_industry.pdf ../cv_builds/cv_tanmoy.pdf
+
 cleanall: clean
 	rm -f cv_detailed.pdf
 
-.PHONY: all detailed industry brief noresearch clean cleanall
+.PHONY: all detailed industry brief noresearch install clean cleanall

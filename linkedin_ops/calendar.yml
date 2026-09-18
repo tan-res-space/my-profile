@@ -1,0 +1,241 @@
+# LinkedIn content calendar — Tanmoy Roy
+# Timezone: Asia/Kolkata (IST, UTC+5:30)
+# Slot A: Wed 08:00 IST — India / APAC tech (MagicPost May 2026: Wed 08:00 scores 96/100)
+# Slot B: Thu 19:00 IST = 09:30 ET — US healthcare workday + India evening
+# Cadence: 2 posts/week for 8 weeks, then review. Do not skip a week.
+# Hashtags: exactly 3, from the bank in hashtags.md. Links go in the first comment.
+
+anchor:
+  id: P0
+  date: "2026-08-17"  # LinkedIn shows "1mo" as of 2026-09-17; exact clock time unknown
+  url: "https://www.linkedin.com/posts/tanmoy-roy-328b592b_smalllanguagemodels-slm-agenticai-share-7494834075690766337-01cZ"
+  short: "https://lnkd.in/p/d43WkBWg"
+  title: "Not more fluent. More honest."
+  impressions: 713
+  reactions: 9
+  comments: 3
+  hashtags:
+    - SmallLanguageModels
+    - SLM
+    - AgenticAI
+    - ResponsibleAI
+    - HealthcareAI
+    - OnPremiseAI
+  note: >
+    Still receiving comments a month later (Arnab Sanyal ~4h before calendar
+    authored). Reply before publishing P1. Tighten future posts to 3 hashtags.
+
+posts:
+  - id: P1
+    date: "2026-09-23"
+    time: "08:00"
+    tz: IST
+    slot: A
+    pillar: slm-agents
+    format: text
+    status: drafted
+    file: posts/2026-09-23-llm-to-slm-conversion.md
+    title: "The conversion is a task inventory, not a model swap"
+    hook: "Most teams skip logging and jump to which 7B to fine-tune."
+    hashtags: [SmallLanguageModels, AgenticAI, HealthcareAI]
+    first_hour: true
+
+  - id: P2
+    date: "2026-09-24"
+    time: "19:00"
+    tz: IST
+    slot: B
+    pillar: evaluation
+    format: text
+    status: drafted
+    file: posts/2026-09-24-confidence-is-not-fluency.md
+    title: "A verbal I'm sure is not a confidence score"
+    hook: "A HIM director does not care that your model is state of the art."
+    hashtags: [HealthcareAI, ResponsibleAI, OnPremiseAI]
+    first_hour: true
+
+  - id: P3
+    date: "2026-10-01"
+    time: "08:00"
+    tz: IST
+    slot: A
+    pillar: slm-agents
+    format: text
+    status: outlined
+    file: posts/2026-10-01-heterogeneous-agents.md
+    title: "SLMs as workers, LLMs as consultants"
+    hook: "NVIDIA's factory metaphor, applied to a medical coding copilot."
+    hashtags: [AgenticAI, SmallLanguageModels, HealthcareAI]
+
+  - id: P4
+    date: "2026-10-02"
+    time: "19:00"
+    tz: IST
+    slot: B
+    pillar: healthcare-speech
+    format: text
+    status: outlined
+    file: posts/2026-10-02-onprem-medical-asr.md
+    title: "Patient audio that never leaves the building"
+    hook: "Medical ASR is a residency problem before it is a WER problem."
+    hashtags: [HealthcareAI, SpeechAI, OnPremiseAI]
+
+  - id: P5
+    date: "2026-10-08"
+    time: "08:00"
+    tz: IST
+    slot: A
+    pillar: slm-agents
+    format: text
+    status: outlined
+    title: "Fine-tune overnight vs wait for the next frontier model"
+    hook: "LoRA on a specialist is a product cycle. API upgrades are a vendor cycle."
+    hashtags: [SmallLanguageModels, MLOps, HealthcareAI]
+
+  - id: P6
+    date: "2026-10-09"
+    time: "19:00"
+    tz: IST
+    slot: B
+    pillar: healthcare-speech
+    format: text
+    status: outlined
+    title: "Medical coding is a schema job"
+    hook: "ICD/CPT proposal is repetitive, scoped, and non-conversational — Belcak's SLM use case."
+    hashtags: [HealthcareAI, ClinicalNLP, AgenticAI]
+
+  - id: P7
+    date: "2026-10-15"
+    time: "08:00"
+    tz: IST
+    slot: A
+    pillar: evaluation
+    format: text
+    status: outlined
+    title: "Hidden states are a product feature"
+    hook: "If you only get the string, you cannot defer."
+    hashtags: [ResponsibleAI, SmallLanguageModels, OnPremiseAI]
+
+  - id: P8
+    date: "2026-10-16"
+    time: "19:00"
+    tz: IST
+    slot: B
+    pillar: healthcare-speech
+    format: text
+    status: outlined
+    title: "Ambient notes and coding copilots are different agents"
+    hook: "One model for both is how you get fluent garbage."
+    hashtags: [HealthcareAI, AgenticAI, SpeechAI]
+
+  - id: P9
+    date: "2026-10-22"
+    time: "08:00"
+    tz: IST
+    slot: A
+    pillar: healthcare-speech
+    format: text
+    status: outlined
+    title: "The unsexy piece: speech endpoints"
+    hook: "PhD work on dynamic endpoint detection is why clinical STT does not drift."
+    hashtags: [SpeechAI, HealthcareAI, SpeechRecognition]
+
+  - id: P10
+    date: "2026-10-23"
+    time: "19:00"
+    tz: IST
+    slot: B
+    pillar: evaluation
+    format: text
+    status: outlined
+    title: "When the generic LLM won"
+    hook: "One honest counterexample. Trust compounds when you publish the miss."
+    hashtags: [ResponsibleAI, HealthcareAI, AgenticAI]
+
+  - id: P11
+    date: "2026-10-29"
+    time: "08:00"
+    tz: IST
+    slot: A
+    pillar: healthcare-speech
+    format: text
+    status: outlined
+    title: "RAG is a correction engine, not a reasoner"
+    hook: "Retrieval can catch a code. It cannot tell you the model should shut up."
+    hashtags: [ClinicalNLP, HealthcareAI, ResponsibleAI]
+
+  - id: P12
+    date: "2026-10-30"
+    time: "19:00"
+    tz: IST
+    slot: B
+    pillar: evaluation
+    format: text
+    status: outlined
+    title: "Guardrails vs a confidence meter"
+    hook: "Topic control stops the wrong chat. Calibration stops the wrong code."
+    hashtags: [ResponsibleAI, HealthcareAI, OnPremiseAI]
+
+  - id: P13
+    date: "2026-11-05"
+    time: "08:00"
+    tz: IST
+    slot: A
+    pillar: slm-agents
+    format: document
+    status: outlined
+    title: "SLM-first agent checklist (carousel)"
+    hook: "Format test. Buffer 2026: carousels can 5x engagement vs text. Keep the voice."
+    hashtags: [AgenticAI, SmallLanguageModels, HealthcareAI]
+
+  - id: P14
+    date: "2026-11-06"
+    time: "19:00"
+    tz: IST
+    slot: B
+    pillar: evaluation
+    format: text
+    status: outlined
+    title: "Pick the metric that can fire you"
+    hook: "AUROC, medical WER, calibration. Fluency is not on the list."
+    hashtags: [ResponsibleAI, HealthcareAI, SpeechAI]
+
+  - id: P15
+    date: "2026-11-12"
+    time: "08:00"
+    tz: IST
+    slot: A
+    pillar: craft
+    format: text
+    status: outlined
+    title: "What I hire for in applied healthcare ML"
+    hook: "Can they design an eval that would kill their own demo?"
+    hashtags: [DataScience, HealthcareAI, ResponsibleAI]
+
+  - id: P16
+    date: "2026-11-13"
+    time: "19:00"
+    tz: IST
+    slot: B
+    pillar: slm-agents
+    format: text
+    status: outlined
+    title: "Not more fluent. More honest. — 8 weeks later"
+    hook: "Close the series. Recap measured claims. Preview Q1 2027."
+    hashtags: [SmallLanguageModels, HealthcareAI, ResponsibleAI]
+
+engagement_daily:
+  comments_on_others: 3
+  targets:
+    - healthcare AI / HIM / clinical NLP practitioners
+    - on-prem / SLM / agentic AI researchers
+    - people who commented on P0 (Percy Bhathena, Nicki Bucceri RHIA, Arnab Sanyal)
+  rule: "No 'great post'. Add a measurement, a counterexample, or a next question."
+
+review:
+  cadence: weekly
+  weekday: Sunday
+  time: "18:00"
+  tz: IST
+  file: metrics.md
+  after_p8: decide whether to add a Wed 12:30 IST discussion slot (PostPika lunch-comment window)

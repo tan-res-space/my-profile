@@ -10,6 +10,12 @@ I maintain multiple versions of my CV tailored for different audiences. All vers
 <div class="cv-grid">
 
   <div class="cv-card">
+    <h3>Current (v1)</h3>
+    <p>Industry-focused CV for 2026: on-prem SLMs, medical coding, clinical notes, and medical ASR. This is the version to send.</p>
+    <a href="{{ '/cv_builds/cv_tanmoy.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>
+  </div>
+
+  <div class="cv-card">
     <h3>Detailed (Full)</h3>
     <p>Complete academic and industry CV with all experience, research, publications, teaching, and references.</p>
     <a href="{{ '/cv_builds/cv_detailed.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>

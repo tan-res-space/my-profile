@@ -35,6 +35,8 @@ exclude:
   - Makefile
   - node_modules/
   - .github/
+  - linkedin_ops/
+  - .cursor/
 
 # Defaults
 defaults:
