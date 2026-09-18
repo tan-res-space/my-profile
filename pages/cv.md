@@ -17,19 +17,19 @@ I maintain multiple versions of my CV tailored for different audiences. All vers
 
   <div class="cv-card">
     <h3>Industry</h3>
-    <p>Focused on industry experience and technical skills. Omits academic research sections, publications, and teaching details.</p>
+    <p>Focused on industry experience and technical skills. Research and post-doctoral roles appear in condensed form to keep the timeline complete; publications and teaching details are omitted.</p>
     <a href="{{ '/cv_builds/cv_industry.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>
   </div>
 
   <div class="cv-card">
     <h3>Brief</h3>
-    <p>Concise 1&ndash;2 page version with condensed project descriptions. Ideal for quick screening.</p>
+    <p>Concise 1&ndash;2 page version with condensed project and research descriptions covering the full 2007&ndash;present timeline. Ideal for quick screening.</p>
     <a href="{{ '/cv_builds/cv_brief.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>
   </div>
 
   <div class="cv-card">
     <h3>Detailed (No Research)</h3>
-    <p>Full project descriptions for all industry roles, but without research, training, and academic sections.</p>
+    <p>Full project descriptions for all industry roles. Academic roles are listed in condensed form so the timeline stays continuous, without the research, training, and publication sections.</p>
     <a href="{{ '/cv_builds/cv_noresearch.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>
   </div>
 

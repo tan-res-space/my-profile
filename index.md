@@ -19,7 +19,7 @@ title: Home
       I am an AI and Machine Learning professional with 17+ years of experience across industry and academia. Currently a Senior Data Scientist at <strong>DeliverHealth Solutions</strong>, I lead AI-driven healthcare solutions&mdash;including Medical Coding Co-pilots, Automatic Medical Note Generation, and fine-tuned Med-ASR engines&mdash;collaborating with partners like Google and Microsoft.
     </p>
     <p>
-      I hold a <strong>PhD</strong> from the <strong>University of Johannesburg</strong> where my research focused on speech emotion recognition using machine learning. I have 8 peer-reviewed publications with Wiley, Springer, IEEE, and Academic Press.
+      From <strong>2016 to 2021</strong> I was a full-time funded researcher at the <strong>University of Johannesburg</strong> &mdash; first as a Doctoral Research Fellow (2016&ndash;2019), earning my <strong>PhD</strong> in speech emotion recognition using machine learning, and then as a <strong>Post-Doctoral Research Fellow</strong> (2019&ndash;2021), both under the Global Excellence Stature (GES) fellowship. I have 8 peer-reviewed publications with Wiley, Springer, IEEE, and Academic Press.
     </p>
     <p>
       Prior to my research career, I spent 8+ years at <strong>SIEMENS</strong> building telecom billing, smart-grid, and electronic vehicle systems using C/C++, Java, and Oracle. This blend of deep industry experience and academic research gives me a unique perspective on building practical AI solutions.
@@ -52,8 +52,14 @@ title: Home
 
   <div class="experience-item">
     <div class="exp-company">University of Johannesburg</div>
-    <div class="exp-meta">Post-Doctoral Fellow &amp; Doctoral Fellow &middot; Jul 2016 &ndash; Sep 2021 &middot; South Africa</div>
-    <div class="exp-desc">Proposed a novel feature set (SEGRT) for speech emotion recognition and a new algorithm for speech endpoint detection. Initiated research collaborations with King Saud University and BITS Pilani. 8 peer-reviewed publications.</div>
+    <div class="exp-meta">Post-Doctoral Research Fellow &middot; Oct 2019 &ndash; Sep 2021 &middot; Johannesburg, South Africa</div>
+    <div class="exp-desc">Full-time funded position under the Global Excellence Stature (GES) fellowship. Built deep learning models for speech emotion recognition, authored two survey papers, and initiated research collaborations with King Saud University (Riyadh) and BITS Pilani (India).</div>
+  </div>
+
+  <div class="experience-item">
+    <div class="exp-company">University of Johannesburg</div>
+    <div class="exp-meta">Doctoral Research Fellow &middot; Jul 2016 &ndash; Jun 2019 &middot; Johannesburg, South Africa</div>
+    <div class="exp-desc">Full-time funded position under the GES doctoral scholarship. Completed the PhD within the stipulated three years. Proposed a novel feature set (SEGRT) for speech emotion recognition and a new algorithm for speech endpoint detection.</div>
   </div>
 
   <div class="experience-item">
