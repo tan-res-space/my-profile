@@ -26,9 +26,9 @@ The CV is maintained as a single LaTeX file (`cv_source/cv_detailed.tex`) with c
 | Version | Driver File | Description |
 |---------|------------|-------------|
 | **Detailed** | `cv_detailed.tex` | Full CV with all sections |
-| **Industry** | `cv_industry.tex` | Industry-focused, no academic sections |
-| **Brief** | `cv_brief.tex` | Concise 1-2 page version |
-| **No Research** | `cv_noresearch.tex` | Detailed industry roles, no research/training |
+| **Industry** | `cv_industry.tex` | Industry-focused; keeps PhD/PostDoc in Experience; omits research/teaching/publications |
+| **Brief** | `cv_brief.tex` | Concise 1-2 page version; PhD/PostDoc remain in Experience |
+| **No Research** | `cv_noresearch.tex` | Detailed industry roles plus UJ fellowships; no research/training sections |
 
 PDFs are **automatically rebuilt** via GitHub Actions whenever files in `cv_source/` are modified. You can also trigger a manual build from the Actions tab.
 

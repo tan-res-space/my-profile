@@ -23,7 +23,7 @@ I maintain multiple versions of my CV tailored for different audiences. All vers
 
   <div class="cv-card">
     <h3>Industry</h3>
-    <p>Focused on industry experience and technical skills. Omits academic research sections, publications, and teaching details.</p>
+    <p>Focused on industry experience and technical skills. Keeps the mid-career PhD and PostDoc in Experience. Omits research expertise, publications, and teaching details.</p>
     <a href="{{ '/cv_builds/cv_industry.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>
   </div>
 
@@ -35,7 +35,7 @@ I maintain multiple versions of my CV tailored for different audiences. All vers
 
   <div class="cv-card">
     <h3>Detailed (No Research)</h3>
-    <p>Full project descriptions for all industry roles, but without research, training, and academic sections.</p>
+    <p>Full project descriptions for industry roles, including the University of Johannesburg PhD and PostDoc. Omits research, training, and publication sections.</p>
     <a href="{{ '/cv_builds/cv_noresearch.pdf' | relative_url }}" class="btn btn-primary" target="_blank">Download PDF</a>
   </div>
 

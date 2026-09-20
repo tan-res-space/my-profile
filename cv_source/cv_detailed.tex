@@ -124,18 +124,20 @@
 
 %--- BRIEF SUMMARY (for brief version) ---
 \ifbool{brief}{
-AI and Machine Learning professional with 19+ years across industry and academia. PhD in speech emotion recognition, University of Johannesburg. Senior Data Scientist at DeliverHealth, leading on-prem small-language-model systems for medical coding, clinical note generation, and medical ASR. Previously 8+ years at SIEMENS on telecom, EV, and smart-grid systems in C/C++, Java, and Oracle.
+AI and Machine Learning professional with 19+ years across industry and academia. After 8+ years at SIEMENS, completed a mid-career PhD and post-doctoral fellowship at the University of Johannesburg in speech emotion recognition. Senior Data Scientist at DeliverHealth, leading on-prem small-language-model systems for medical coding, clinical note generation, and medical ASR.
 }{
 %--- INDUSTRY SUMMARY (for industry version) ---
 \ifbool{industry}{
 \textbf{Senior Data Scientist} and \textbf{PhD} with 19+ years delivering AI/ML systems in healthcare, finance, and telecom. Currently at DeliverHealth, leading on-prem \textbf{small language model} (SLM) solutioning: medical coding co-pilots, automatic clinical notes, RAG correction, and medical ASR. Collaborates with product and partners including Google and Microsoft. Focus: \textit{STT, RAG, SLM fine-tuning, clinical NLP, computer vision}.
 
-Career started at \textbf{SIEMENS} (8+ years) building telecom, electronic-vehicle, and smart-grid billing systems.
+Career started at \textbf{SIEMENS} (8+ years) building telecom, electronic-vehicle, and smart-grid billing systems. Mid-career PhD and post-doctoral fellowship at the University of Johannesburg (2016--2021), then returned to applied AI/ML.
 }{
 %--- FULL SUMMARY (default and noresearch) ---
 AI and Machine Learning professional, consultant, and research guide with 19+ years spanning industry and academia. Currently a Senior Data Scientist leading \textbf{AI/ML} solutioning and team building. Work spans \textit{speech processing, clinical NLP, computer vision, medical imaging, and IoT-edge computing}, with a current focus on on-prem SLMs that can be inspected and deferred rather than only made more fluent.
 
-\ifbool{noresearch}{}{
+\ifbool{noresearch}{
+Mid-career PhD and post-doctoral fellowship at the \textbf{University of Johannesburg} (2016--2021) in speech emotion recognition, then returned to applied AI/ML.
+}{
 Doctoral research was \textbf{speech emotion recognition} (SER): a novel feature set (SEGRT) and a speech endpoint-detection algorithm, with peer-reviewed publications. Awarded the \textit{Global Excellence Stature} (GES) scholarship at the \textbf{University of Johannesburg} (UJ) and completed the PhD in three years, then continued as a \textbf{post-doctoral research fellow} under the same fellowship.
 }
 
@@ -292,8 +294,7 @@ Training topics: Data Science \& ML, Deep Learning (ANN/CNN/RNN/Attention), Pyth
 
 \vspace{.2cm}
 
-%--- University of Johannesburg: shown only when showresearch is true ---
-\ifbool{showresearch}{
+%--- University of Johannesburg: always in Experience (mid-career PhD / PostDoc) ---
 \noindent
 {\textscale{1.4}{\textbf{University of Johannesburg}}} \\
 {\textsc{Johannesburg, South Africa}}
@@ -303,17 +304,32 @@ Training topics: Data Science \& ML, Deep Learning (ANN/CNN/RNN/Attention), Pyth
 \begin{leftrule}
 \noindent {\textscale{1.2} {\textbf{Post Doctoral Research Fellow}}}
 {\hfill [\textsc{Oct '19 -- Sep '21}]} \\
+\ifbool{fulldetail}{
+\ifbool{showpublications}{
 Built a feed-forward network \cite{roy_2021_academic} on the doctoral SER feature set \cite{roy_2018_ieee}. Wrote two surveys: emotion recognition in the $4^{th}$ industrial revolution \cite{roy_wesley_2020_springer} and SER classification techniques \cite{roy_2020_wiley}. Opened collaborations with King Saud University \cite{roy_2021_mrcnn} and BITS Pilani \cite{roy_2021_text}.
+}{
+Built a feed-forward network on the doctoral SER feature set. Wrote two surveys: emotion recognition in the 4th industrial revolution and SER classification techniques. Opened collaborations with King Saud University and BITS Pilani.
+}
+}{
+SER deep-learning follow-on, two survey chapters, and research collaborations with King Saud University and BITS Pilani.
+}
 
 \vspace{.4cm}
 
 \noindent {\textscale{1.2} {\textbf{Doctoral Research Fellow}}}
 {\hfill [\textsc{Jul '16 -- Jun '19}]} \\
+\ifbool{fulldetail}{
+\ifbool{showpublications}{
 Thesis: ``Detecting emotions from speech using Machine Learning Techniques,'' completed in three years. Proposed SEGRT (\textit{subjective emotional gap reduction technique}) \cite{roy_2018_ieee, roy_2020_springer} and a speech endpoint-detection algorithm for pre-processing \cite{roy_2019_cnsns}.
+}{
+Thesis: ``Detecting emotions from speech using Machine Learning Techniques,'' completed in three years. Proposed SEGRT (\textit{subjective emotional gap reduction technique}) and a speech endpoint-detection algorithm for pre-processing.
+}
+}{
+PhD completed in three years. Thesis on speech emotion recognition: SEGRT feature set and a speech endpoint-detection algorithm.
+}
 
 \end{leftrule}
 \end{adjustwidth}
-}{} % end of University of Johannesburg conditional
 
 \vspace{.2cm}
 
@@ -439,8 +455,6 @@ IVR/USSD system support and automated monitoring. Technologies: Java, C++, Linux
 %----------------------------------------------------------------------------------------
 %	TECHNICAL EXPERTISE
 %----------------------------------------------------------------------------------------
-
-\ifbool{industry}{\newpage}{}
 
 \roottitle{\lighter{\textscale{1.2}{TECHNICAL EXPERTISE}}}
 

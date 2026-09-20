@@ -16,6 +16,7 @@ cv_source/*.synctex.gz
 cv_source/*.fls
 cv_source/*.fdb_latexmk
 cv_source/*.toc
+cv_source/*.pdf
 
 # Ruby
 Gemfile.lock
