@@ -16,7 +16,7 @@ title: Home
 
   <div class="summary">
     <p>
-      I am an AI and Machine Learning professional with 17+ years of experience across industry and academia. Currently a Senior Data Scientist at <strong>DeliverHealth Solutions</strong>, I lead AI-driven healthcare solutions&mdash;including Medical Coding Co-pilots, Automatic Medical Note Generation, and fine-tuned Med-ASR engines&mdash;collaborating with partners like Google and Microsoft.
+      I am an AI and Machine Learning professional with 19+ years of experience across industry and academia. Currently a Senior Data Scientist at <strong>DeliverHealth Solutions</strong>, I lead AI-driven healthcare solutions&mdash;including Medical Coding Co-pilots, Automatic Medical Note Generation, and fine-tuned Med-ASR engines&mdash;collaborating with partners like Google and Microsoft.
     </p>
     <p>
       I hold a <strong>PhD</strong> from the <strong>University of Johannesburg</strong> where my research focused on speech emotion recognition using machine learning. I have 8 peer-reviewed publications with Wiley, Springer, IEEE, and Academic Press.
@@ -35,7 +35,7 @@ title: Home
   <div class="experience-item">
     <div class="exp-company">DeliverHealth Solutions</div>
     <div class="exp-meta">Senior Data Scientist &middot; July 2024 &ndash; Present &middot; Remote, India</div>
-    <div class="exp-desc">Leading AI-driven product ideation and organization-wide AI adoption. Building Medical Coding Co-pilot (SLM fine-tuning), Automatic Medical Note Generation (Gemini Pro), RAG-based correction engines, and fine-tuning STT models achieving 12% Medical WER.</div>
+    <div class="exp-desc">Leading AI-driven product ideation and organization-wide AI adoption. Building Medical Coding Co-pilot (SLM fine-tuning), Automatic Medical Note Generation (Gemini 3.1 Pro), RAG-based correction engines, and fine-tuning STT models achieving 12% Medical WER.</div>
   </div>
 
   <div class="experience-item">

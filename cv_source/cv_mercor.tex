@@ -13,7 +13,8 @@
 % RULE: every fact here comes from cv_detailed.tex. Do not add
 % experience, tools, or numbers that are not in the detailed CV.
 % References are omitted on purpose (third-party contact data).
-% Language: ASD-STE100 (Simplified Technical English).
+% Language: the author's own sentences from cv_detailed.tex (plain, uneven
+% on purpose). Do not smooth them into a uniform style.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[11pt,a4paper]{article}
@@ -27,6 +28,8 @@
 \usepackage[english]{babel}
 \usepackage[style=numeric,sorting=ydnt]{biblatex}
 \addbibresource{publications.bib}
+% Sort unpublished (in preparation) items after published ones.
+\DeclareSourcemap{\maps[datatype=bibtex]{\map{\pertype{unpublished}\step[fieldset=presort, fieldvalue={zz}]}}}
 
 \include{structure}
 
@@ -47,7 +50,6 @@
 \newenvironment{roleblock}{\par\noindent\begin{minipage}{\linewidth}}{\end{minipage}\par\vspace{0.2cm}}
 \fi
 
-\newcommand{\area}[2]{\item \textbf{#1.} #2}
 
 \begin{document}
 
@@ -75,36 +77,12 @@
 \vspace{.2cm}
 
 \noindent
-Senior Data Scientist with a PhD and more than 19 years in industry and academia. Builds and deploys on-prem ML models for healthcare at DeliverHealth. The current work includes medical speech-to-text at 12\% medical WER and a medical coding co-pilot. On the coding task, a small on-prem model did better than a generic LLM (Gemini). Its AUROC for right and wrong answers increased from about 0.60 to about 0.90.
+\textbf{Senior Data Scientist} and \textbf{PhD} with 19+ years delivering AI/ML systems in healthcare, finance, and telecom. Currently at DeliverHealth, leading on-prem \textbf{small language model} (SLM) solutioning: medical coding co-pilots, automatic clinical notes, RAG correction, and medical ASR. Collaborates with product and partners including Google and Microsoft. Focus: \textit{STT, RAG, SLM fine-tuning, clinical NLP, computer vision}.
 
 \vspace{.2cm}
 
 \noindent
-Started at SIEMENS and worked there for more than 8 years with C, C++, Java, and Oracle. Then completed a PhD in three years and a post-doctoral fellowship at the University of Johannesburg. The research topic was speech emotion recognition. Wrote eight peer-reviewed publications.
-
-\spacedhrule{0.3em}{0.5em}
-
-%----------------------------------------------------------------------------------------
-%	CORE STRENGTHS
-%----------------------------------------------------------------------------------------
-
-\roottitle{\lighter{\textscale{1.2}{CORE STRENGTHS}}}
-
-\begin{itemize}[leftmargin=1cm, itemsep=0.05cm]
-\area{Production ML}{Built Med-ASR, a medical coding co-pilot, a RAG correction engine, and physician note generation. Earlier, built a claim denial model (XGBoost, 89\% accuracy) and an X-ray disease detector (ResNet34, 84\%).}
-
-\area{Model evaluation}{Used white-box logits as a confidence meter. Compared a fine-tuned SLM with a Gemini baseline. Compared an attention-based text classifier with Naive Bayes, logistic regression, random forest, and MLP. Teaches hypothesis tests, feature selection, and outlier detection.}
-
-\area{ML engineering}{Ran inference on on-prem GPUs. Fine-tuned Gemini-1.5-Pro and Whisper on proprietary data, and the audio did not go to a public cloud. Tools are unsloth, Docker, KubeFlow, AWS, and GCP. Also teaches MLOps: packaging, CI/CD, and model serving with Flask.}
-
-\area{Research}{Completed a PhD in speech emotion recognition in three years on a Global Excellence Stature (GES) scholarship. Proposed the SEGRT feature set and a speech endpoint-detection algorithm. Guides a PhD scholar from King Saud University and an MTech student from BITS Pilani. Reviews for the \textit{International Journal of Systems Science}.}
-
-\area{Software engineering}{For more than 8 years at SIEMENS, designed and implemented telecom provisioning, billing, and charging modules. Used C/C++, ProC, Java Spring, and Oracle PL/SQL on Linux.}
-
-\area{Retrieval (RAG)}{Built a RAG engine that corrects ASR drafts before delivery. This decreases manual cleanup. Tools are ollama, langchain, and langgraph. Also used record linkage to remove duplicate patient records.}
-
-\area{Data science and finance}{Led a team of data scientists, quantitative analysts, and software engineers. Built a production backtest for complex option strategies, and SHAP and ALE plots for model transparency. Predicted 30-day readmission from EHR data with 88\% test accuracy.}
-\end{itemize}
+Career started at \textbf{SIEMENS} (8+ years) building telecom, electronic-vehicle, and smart-grid billing systems. Mid-career PhD and post-doctoral fellowship at the \textbf{University of Johannesburg} (2016--2021). Doctoral research was \textbf{speech emotion recognition} (SER): a novel feature set (SEGRT) and a speech endpoint-detection algorithm, with peer-reviewed publications. Then returned to applied AI/ML.
 
 \spacedhrule{0.3em}{0.5em}
 
@@ -121,13 +99,13 @@ Started at SIEMENS and worked there for more than 8 years with C, C++, Java, and
 \begin{adjustwidth}{3em}{0pt}
 \begin{leftrule}
 \rolehead{Senior Data Scientist}{}
-Leads AI/ML product ideas and their adoption across the company. Designs and deploys on-prem specialist models with product owners and with partners such as Google and Microsoft. The goal is small models that a person can inspect and that can defer a decision. Fluency alone is not the goal.
+Lead AI/ML product ideation and organization-wide adoption. Design and deploy on-prem specialist models with product owners and partners including Google and Microsoft. Current bar: models small enough to inspect and honest enough to defer, not merely more fluent.
 
 \begin{itemize}[leftmargin=0.5cm, itemsep=0cm]
-\item \textbf{Medical coding co-pilot.} Fine-tuned an SLM on proprietary historical data in a continuous learning loop. The model helps human coders and decreases the time for each document. White-box logits give a confidence meter. On this task, the on-prem SLM did better than a generic LLM (Gemini). The AUROC for right and wrong answers increased from about 0.60 to about 0.90.
-\item \textbf{Medical ASR (Med-ASR).} Built an in-house speech-to-text engine on proprietary data. Fine-tuned Gemini-1.5-Pro and Whisper. The engine reached 12\% medical WER, and the encounter audio did not go to a public cloud.
-\item \textbf{RAG correction engine.} Built a retrieval-augmented engine that corrects ASR drafts before delivery. It decreases manual cleanup and increases document quality.
-\item \textbf{Medical note generation.} Built a template-based tool that writes physician notes. It runs on a self-service platform and uses Gemini 3.1 Pro and proprietary historical data.
+\item \textbf{Medical Coding Co-pilot:} SLM fine-tuned on proprietary historical data in a continuous learning loop to assist human coders and cut time-per-document. White-box logits used as a confidence meter; on this task a specialized on-prem SLM outperformed a generic LLM (Gemini) baseline, with right-vs-wrong AUROC moving from $\sim$0.60 to $\sim$0.90.
+\item \textbf{Automatic Medical Note Generation:} Template-based physician note generation on a self-service platform, using Gemini 3.1 Pro and proprietary historical data.
+\item \textbf{RAG-based Medical Correction Engine:} Retrieval-augmented correction of ASR drafts before delivery, reducing manual cleanup and lifting document quality.
+\item \textbf{Medical ASR (Med-ASR):} In-house speech-to-text engine on proprietary data. Fine-tuned Gemini-1.5-Pro and Whisper; reached 12\% medical WER without sending encounter audio to a public cloud.
 \end{itemize}
 \end{leftrule}
 \end{adjustwidth}
@@ -137,12 +115,12 @@ Leads AI/ML product ideas and their adoption across the company. Designs and dep
 \begin{adjustwidth}{3em}{0pt}
 \begin{leftrule}
 \rolehead{Senior Data Scientist}{}
-Led and mentored a team of data scientists, quantitative analysts, and software engineers. The team delivered systems for the finance domain.
+Led and mentored a team spanning data science, quantitative analytics, and software engineering, delivering finance-domain systems.
 
 \begin{itemize}[leftmargin=0.5cm, itemsep=0cm]
-\item \textbf{Option strategy backtest.} Built a production backtest for complex option strategies. The work combined software engineering, financial analytics, and data science.
-\item \textbf{Explainable AI.} Built the full product. It shows SHAP and accumulated local effect (ALE) plots for model transparency.
-\item \textbf{Data visualization platform.} Led the development of an analytics UI that needs little manual work.
+\item \textbf{Option Trading Strategy Backtest:} Production backtest for complex option strategies.
+\item \textbf{Explainable AI:} SHAP and accumulated local effect (ALE) visualizations for model transparency; built the product end to end.
+\item \textbf{Data Visualization Platform:} Low-intervention analytics UI; led platform development.
 \end{itemize}
 \end{leftrule}
 \end{adjustwidth}
@@ -152,14 +130,14 @@ Led and mentored a team of data scientists, quantitative analysts, and software 
 \begin{adjustwidth}{3em}{0pt}
 \begin{leftrule}
 \rolehead{Data Scientist (Consulting)}{}
-Built ML models on tabular and image data for healthcare projects. Also did data engineering, put ML models into production, and helped build the ML team.
+Primary responsibility was ML model building with both tabular and image data. Other responsibilities involved data engineering, ML model productionizing, and ML team building. Executed projects in the healthcare domain.
 
 \begin{itemize}[leftmargin=0.5cm, itemsep=0cm]
-\item \textbf{Claim denial prediction.} Trained an XGBoost classifier to predict if a health institute's claims get denied or approved. Accuracy was 89\%. The work also showed the reasons for denials.
-\item \textbf{X-ray disease detection.} Used a ResNet34 model. Accuracy was 84\%.
-\item \textbf{Patient record de-duplication.} Used record linkage to join broken chains of patient information.
-\item \textbf{Clinical trial enrollment.} Built a proof of concept on public data that predicts final enrollment. Accuracy was about 75\%.
-\item \textbf{Handwritten medical forms.} Built a form reader around AWS Textract output.
+\item \textbf{Insurance Claim Denial Prediction:} Predict whether claims submitted by the health institute will get denied or approved, and show the reasons behind the denial. Tabular data with relevant features, after pre-processing, was the training data for an XGBoost classifier. Model accuracy was 89\% although there was further scope for improvement.
+\item \textbf{Patient Data De-Duplication:} A broken chain of information affects service quality for healthcare providers and consumes storage space. Used the record linkage concept to solve this problem.
+\item \textbf{Disease Detection from X-Ray images:} Used a ResNet34 model to achieve 84\% accuracy.
+\item \textbf{Clinical Trial Enrollment Prediction:} Proof of concept on publicly available high-quality data. The target was to predict the number of people finally enrolled for a clinical trial. Prediction accuracy was $\sim$75\% but there was further scope for improvement.
+\item \textbf{Handwritten Medical Form Reader:} Varying handwriting styles make these forms hard to digitize. Used AWS Textract to extract the handwritten text and built the solution around the Textract output.
 \end{itemize}
 \end{leftrule}
 \end{adjustwidth}
@@ -169,18 +147,19 @@ Built ML models on tabular and image data for healthcare projects. Also did data
 \begin{adjustwidth}{3em}{0pt}
 \begin{leftrule}
 \rolehead{Research Consultant}{}
-Research work in computer vision, NLP, and data science.
+Research consultancy across computer vision, NLP, and data science:
 \begin{itemize}[leftmargin=0.5cm, itemsep=0cm]
-\item \textbf{Human fall detection.} Evaluated current deep learning modules. Proposed a Masked R-CNN segmentation model \cite{roy_2021_mrcnn} with 94\% F1 and 89\% IoU.
-\item \textbf{Text classification.} Built a multi-head attention classifier \cite{roy_2021_text} with more than 96\% test accuracy. Compared it with Naive Bayes, logistic regression, random forest, and MLP.
-\item \textbf{EHR readmission.} Predicted 30-day readmission from EHR data with 88\% test accuracy. Used process-mining features in sequence-to-sequence models.
-\item \textbf{Medical imaging and CV.} Used U-Net to detect polyps in colonoscopy images. Used MobileNet V2 and Inception ResNetV2 to detect face masks in surveillance video.
+\item \textbf{Human Fall Detection (CV):} Fall detection from surveillance frames. Evaluated current deep-learning modules. Proposed a Masked R-CNN semantic segmentation model \cite{roy_2021_mrcnn} at 94\% F1 and 89\% IoU; next module is human pose estimation.
+\item \textbf{Text Classification (NLP):} Multi-head attention classifier \cite{roy_2021_text} above 96\% test accuracy, compared with Naive Bayes, logistic regression, random forest, and MLP.
+\item \textbf{Polyp Detection (Medical Imaging):} U-Net architecture for polyps in colonoscopy images, aimed at cancerous-polyp detection.
+\item \textbf{Electronic Health Record (EHR) and Process Mining:} 30-day readmission prediction from EHR. Process-mining features into sequence-to-sequence models; 88\% test accuracy.
+\item \textbf{Face Mask Detection (CV):} Mask detection from surveillance cameras during Covid-19 using MobileNet V2 and Inception ResNetV2.
 \end{itemize}
 
 \vspace{.2cm}
 
 \rolehead{Training Consultant}{}
-Teaches students, people who change careers, and engineers in industry. The topics are data science, machine learning, and deep learning (ANN, CNN, RNN, attention). Other topics are Python for ML (numpy, pandas, PyTorch, TensorFlow, Flask) and MLOps. Cloud topics are Docker and AWS (DMS, RDS, EMR, SageMaker).
+Training tracks for students, career-switchers, and practising engineers. Topics: Data Science \& ML, Deep Learning (ANN/CNN/RNN/Attention), Python for ML/DL, Practical Machine Learning (MLOps), and Cloud \& Docker (AWS DMS, RDS, EMR, SageMaker).
 \end{leftrule}
 \end{adjustwidth}
 
@@ -190,12 +169,12 @@ Teaches students, people who change careers, and engineers in industry. The topi
 \begin{leftrule}
 \begin{roleblock}
 \rolehead{Post Doctoral Research Fellow}{[\textsc{Oct '19 -- Sep '21}]}
-Built a feed-forward network \cite{roy_2021_academic} on the SER feature set from the PhD \cite{roy_2018_ieee}. Wrote two surveys. One is on emotion recognition in the fourth industrial revolution \cite{roy_wesley_2020_springer}. The other is on SER classification techniques \cite{roy_2020_wiley}. Started research work with King Saud University \cite{roy_2021_mrcnn} and BITS Pilani \cite{roy_2021_text}.
+Built a feed-forward network \cite{roy_2021_academic} on the doctoral SER feature set \cite{roy_2018_ieee}. Wrote two surveys: emotion recognition in the $4^{th}$ industrial revolution \cite{roy_wesley_2020_springer} and SER classification techniques \cite{roy_2020_wiley}. Opened collaborations with King Saud University \cite{roy_2021_mrcnn} and BITS Pilani.
 \end{roleblock}
 
 \begin{roleblock}
 \rolehead{Doctoral Research Fellow}{[\textsc{Jul '16 -- Jun '19}]}
-Thesis: ``Detecting emotions from speech using Machine Learning Techniques.'' Completed the PhD in three years. Proposed SEGRT, the \textit{subjective emotional gap reduction technique} \cite{roy_2018_ieee, roy_2020_springer}. Also proposed a speech endpoint-detection algorithm for pre-processing \cite{roy_2019_cnsns}.
+Thesis: ``Detecting emotions from speech using Machine Learning Techniques,'' completed in three years. Proposed SEGRT (\textit{subjective emotional gap reduction technique}) \cite{roy_2018_ieee, roy_2020_springer} and a speech endpoint-detection algorithm for pre-processing \cite{roy_2019_cnsns}.
 \end{roleblock}
 \end{leftrule}
 \end{adjustwidth}
@@ -206,29 +185,44 @@ Thesis: ``Detecting emotions from speech using Machine Learning Techniques.'' Co
 \begin{leftrule}
 \begin{roleblock}
 \rolehead{Associate Consultant}{[{Jan '13 -- Sep '15}]}
-$\bullet$ Designed and implemented a Telecom Service Provisioning system with \textit{Java Spring} and \textit{Oracle}. It was a multi-tier application on RedHat Linux. Later customized it with \textit{Java, SOAP}, and \textit{XML}. \\
-$\bullet$ Designed and implemented two modules for a GSM-R billing system. The CRM integration module used \textit{Java} and \textit{Oracle PL/SQL}. The billing module used \textit{C/C++} and \textit{Oracle PL/SQL} on \textit{Linux}.
+$\bullet$ Designed and implemented a Telecom Service Provisioning system based on a RedHat Linux multi-tiered application using Java Spring Framework. Technologies used \textit{Java Spring, Oracle}. \\
+$\bullet$ Customization of Telecom Service Provisioning system using \textit{Java, SOAP, XML, Oracle} on \textit{Linux} platform. \\
+$\bullet$ Designed and implemented CRM Service Provisioning integration module for GSM-R Billing system using \textit{Java, Oracle PL/SQL}. \\
+$\bullet$ Designed and implemented the Billing module for GSM-R Billing system using \textit{C/C++, Oracle PL/SQL} on \textit{Linux} platform.
 \end{roleblock}
 
 \begin{roleblock}
 \rolehead{Sr. System Engineer}{[{Jan '11 -- Dec '12}]}
-$\bullet$ Designed and implemented a charging module for an electronic car billing system in \textit{C/C++} and \textit{Oracle}. \\
-$\bullet$ Built a GUI for telecom call analysis with \textit{Qt} and \textit{C++}. It tracked calls and showed zone-based analysis with graphical simulations.
+$\bullet$ Designed and implemented a Charging module for the Electronic Car billing system using \textit{C/C++ and Oracle}. \\
+$\bullet$ Designed and implemented GUI based Telecom Call Analysis system. Features include Call tracking, Zone based call analysis with Graphical simulations. Used \textit{C++ based Qt} GUI Library.
 \end{roleblock}
 
 \begin{roleblock}
 \rolehead{System Engineer}{[{Jan '09 -- Dec '10}]}
-$\bullet$ Designed and implemented Bill Printing and Bill By Email modules for a telecom billing system. Used \textit{Java, ProC/C++}, and \textit{Oracle PL/SQL}. \\
-$\bullet$ Designed and implemented a charging module for telecom interconnect billing with \textit{Java} and \textit{Oracle}.
+$\bullet$ Designed and implemented Bill Printing and Bill By Email module for a Telecom Billing system. Technologies: Java, ProC/C++, Oracle PL/SQL. \\
+$\bullet$ Designed and implemented a Charging module for a Telecom Interconnect Billing system. Technologies: Java, Oracle.
 \end{roleblock}
 
 \begin{roleblock}
 \rolehead{Associate System Engineer}{[{Jan '07 -- Dec '08}]}
-$\bullet$ Gave system support alone for an IVR and USSD solution. Used \textit{Java, C++, Linux}, shell, and awk. \\
-$\bullet$ Built an automated monitoring system with \textit{Java}, shell, and awk to improve the client experience.
+$\bullet$ Single handedly provided System Support for IVR and USSD Solution. Technologies used: \textit{Java, C++, Linux, awk script, shell script}. \\
+$\bullet$ Developed an automated monitoring system using \textit{Java, shell script, awk script} to improve client experience.
 \end{roleblock}
 \end{leftrule}
 \end{adjustwidth}
+
+\spacedhrule{-0.4em}{0.5em}
+
+%----------------------------------------------------------------------------------------
+%	RESEARCH SUPERVISION (no tense: status of each supervision not stated)
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{RESEARCH SUPERVISION \& GUIDANCE}}}
+
+\begin{itemize}[leftmargin=1cm, itemsep=-0.1cm]
+	\item PhD scholar, King Saud University, Saudi Arabia. Computer Vision: detection of human fall from a surveillance camera.
+	\item MTech student, BITS Pilani, India. Computer Vision: visual scene understanding for autonomous vehicles.
+\end{itemize}
 
 \spacedhrule{-0.4em}{0.5em}
 
@@ -285,6 +279,11 @@ $\bullet$ Built an automated monitoring system with \textit{Java}, shell, and aw
 
 \vspace{0.2cm}
 
-\printbibliography[heading=none]
+\printbibliography[heading=none, nottype=unpublished]
+
+\vspace{0.2cm}
+\noindent\textbf{In preparation}
+
+\printbibliography[heading=none, type=unpublished, resetnumbers=false]
 
 \end{document}
