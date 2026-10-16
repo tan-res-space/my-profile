@@ -5,6 +5,7 @@
 #   make industry   - Build industry-focused CV
 #   make brief      - Build brief/short CV
 #   make noresearch - Build detailed CV without research/training
+#   make mercor     - Build Mercor-targeted CV (standalone cv_mercor.tex)
 #   make clean      - Remove build artifacts
 
 # Auto-detect MacTeX path on macOS
@@ -17,12 +18,13 @@ LATEX = pdflatex
 BIBER = biber
 
 # Default target
-all: detailed industry brief noresearch
+all: detailed industry brief noresearch mercor
 
 detailed: cv_detailed.pdf
 industry: cv_industry.pdf
 brief: cv_brief.pdf
 noresearch: cv_noresearch.pdf
+mercor: cv_mercor.pdf
 
 # Full detailed CV (original)
 cv_detailed.pdf: cv_detailed.tex structure.tex publications.bib
@@ -52,16 +54,24 @@ cv_noresearch.pdf: cv_noresearch.tex cv_detailed.tex structure.tex publications.
 	$(LATEX) cv_noresearch.tex
 	$(LATEX) cv_noresearch.tex
 
+# Mercor-targeted version (standalone; facts only from cv_detailed.tex)
+cv_mercor.pdf: cv_mercor.tex structure.tex publications.bib
+	$(LATEX) cv_mercor.tex
+	$(BIBER) cv_mercor
+	$(LATEX) cv_mercor.tex
+	$(LATEX) cv_mercor.tex
+
 clean:
 	rm -f *.aux *.bbl *.bcf *.blg *.log *.out *.run.xml *.toc
-	rm -f cv_industry.pdf cv_brief.pdf cv_noresearch.pdf
+	rm -f cv_industry.pdf cv_brief.pdf cv_noresearch.pdf cv_mercor.pdf
 
 install: all
 	mkdir -p ../cv_builds
 	cp cv_detailed.pdf cv_industry.pdf cv_brief.pdf cv_noresearch.pdf ../cv_builds/
 	cp cv_industry.pdf ../cv_builds/cv_tanmoy.pdf
+	cp cv_mercor.pdf ../cv_builds/
 
 cleanall: clean
 	rm -f cv_detailed.pdf
 
-.PHONY: all detailed industry brief noresearch install clean cleanall
+.PHONY: all detailed industry brief noresearch mercor install clean cleanall

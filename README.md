@@ -29,6 +29,7 @@ The CV is maintained as a single LaTeX file (`cv_source/cv_detailed.tex`) with c
 | **Industry** | `cv_industry.tex` | Industry-focused; keeps PhD/PostDoc in Experience; omits research/teaching/publications |
 | **Brief** | `cv_brief.tex` | Concise 1-2 page version; PhD/PostDoc remain in Experience |
 | **No Research** | `cv_noresearch.tex` | Detailed industry roles plus UJ fellowships; no research/training sections |
+| **Mercor** | `cv_mercor.tex` | Standalone; targets Mercor AI-training/evaluation roles; facts only from the detailed CV; no references |
 
 PDFs are **automatically rebuilt** via GitHub Actions whenever files in `cv_source/` are modified. You can also trigger a manual build from the Actions tab.
 

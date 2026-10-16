@@ -50,6 +50,14 @@ jobs:
         latexmk_use_xelatex: false
         args: -pdf -interaction=nonstopmode
 
+    - name: Build Mercor CV
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cv_mercor.tex
+        working_directory: cv_source/
+        latexmk_use_xelatex: false
+        args: -pdf -interaction=nonstopmode
+
     - name: Copy PDFs to cv_builds
       run: |
         mkdir -p cv_builds
@@ -57,6 +65,7 @@ jobs:
         cp cv_source/cv_industry.pdf cv_builds/
         cp cv_source/cv_brief.pdf cv_builds/
         cp cv_source/cv_noresearch.pdf cv_builds/
+        cp cv_source/cv_mercor.pdf cv_builds/
         cp cv_source/cv_industry.pdf cv_builds/cv_tanmoy.pdf
 
     - name: Commit and push updated PDFs

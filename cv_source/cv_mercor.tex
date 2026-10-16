@@ -1,0 +1,287 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tanmoy CV - Mercor Version (standalone)
+%
+% Targets Mercor AI-training / evaluation roles:
+%   1. Machine Learning Expert
+%   2. ML Challenge Task Auditor
+%   3. Machine Learning Engineer Talent Network
+%   4. STEM PhDs and Technical Domain Experts
+%   5. AI Developer Trace Task Auditor
+%   6. Software Engineer - Agentic Search Systems
+%   7. Data Scientist Talent Network
+%
+% RULE: every fact here comes from cv_detailed.tex. Do not add
+% experience, tools, or numbers that are not in the detailed CV.
+% References are omitted on purpose (third-party contact data).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{mdframed}
+\usepackage{etoolbox}
+\usepackage{needspace}
+
+\usepackage[english]{babel}
+\usepackage[style=numeric,sorting=ydnt]{biblatex}
+\addbibresource{publications.bib}
+
+\include{structure}
+
+% Fallbacks: structure.tex may not define these layout macros yet.
+\ifdefined\employerhead\else
+\newcommand{\employerhead}[3]{%
+  \par\Needspace{10\baselineskip}%
+  \noindent{\textscale{1.4}{\textbf{#1}}}\\*%
+  {\textsc{#2}}{\hfill #3}\par\nopagebreak}
+\fi
+\ifdefined\rolehead\else
+\newcommand{\rolehead}[2]{%
+  \par\Needspace{6\baselineskip}%
+  \noindent{\textscale{1.2}{\textbf{#1}}}%
+  \ifstrempty{#2}{}{{\hfill #2}}\\*\nopagebreak}
+\fi
+\ifcsname roleblock\endcsname\else
+\newenvironment{roleblock}{\par\noindent\begin{minipage}{\linewidth}}{\end{minipage}\par\vspace{0.2cm}}
+\fi
+
+\newcommand{\area}[2]{\item \textbf{#1:} #2}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT
+%----------------------------------------------------------------------------------------
+
+\maintitle{TANMOY ROY}{PhD}
+
+\noindent
+{Kolkata, India} \bull
+\href{mailto:tanmoy.main@gmail.com}{tanmoy.main@gmail.com} \bull
+\textsmaller{(+91)~7003135175} \bull
+\href{https://www.linkedin.com/in/tanmoy-roy-328b592b}{LinkedIn} \bull
+\href{https://scholar.google.com/citations?user=FweJmHYAAAAJ\&hl=en}{Google Scholar}
+
+\spacedhrule{0.3em}{0.5em}
+
+%----------------------------------------------------------------------------------------
+%	SUMMARY
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{SUMMARY}}}
+
+\vspace{.2cm}
+
+\noindent
+\textbf{Senior Data Scientist} and \textbf{PhD} with 19+ years across industry and academia. Designs and deploys ML systems in healthcare: medical ASR at \textbf{12\% medical WER}, an on-prem \textbf{SLM medical coding co-pilot}, a \textbf{RAG-based correction engine} for ASR drafts, and template-based clinical note generation. Evaluates models with evidence: white-box logits as a confidence meter moved right-vs-wrong \textbf{AUROC from $\sim$0.60 to $\sim$0.90}, and the specialized on-prem SLM outperformed a generic LLM (Gemini) baseline on the task.
+
+\vspace{.2cm}
+
+\noindent
+Started with 8+ years as a programmer and system engineer at \textbf{SIEMENS} (C/C++, Java, Oracle PL/SQL, Linux). Completed a mid-career \textbf{PhD in three years} and a post-doctoral fellowship at the \textbf{University of Johannesburg} in speech emotion recognition, with \textbf{eight peer-reviewed publications}.
+
+\spacedhrule{0.3em}{0.5em}
+
+%----------------------------------------------------------------------------------------
+%	AREAS OF EXPERTISE (mapped to target role families)
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{AREAS OF EXPERTISE}}}
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.05cm]
+\area{Production Machine Learning}{Designs and deploys on-prem specialist models with product owners and partners including Google and Microsoft. Shipped Med-ASR (12\% medical WER), a medical coding co-pilot, a RAG correction engine, and physician note generation. Earlier models: insurance claim denial prediction (XGBoost, 89\% accuracy) and X-ray disease detection (ResNet34, 84\%).}
+
+\area{ML Evaluation and Experiment Rigor}{White-box logits as a confidence meter; right-vs-wrong AUROC $\sim$0.60 $\rightarrow$ $\sim$0.90. Benchmarked an on-prem SLM against a generic LLM (Gemini) baseline. Compared a multi-head attention text classifier against Naive Bayes, logistic regression, random forest, and MLP. Reports task metrics: WER, F1, IoU, accuracy. Teaches hypothesis testing (parametric and non-parametric), feature selection (t-test, F-test, $Chi^2$, ANOVA), and outlier detection.}
+
+\area{ML Engineering and Deployment}{On-prem GPU inference. SLM fine-tuning on proprietary data in a continuous learning loop. Fine-tuned Gemini-1.5-Pro and Whisper for medical speech-to-text without sending encounter audio to a public cloud. ML model productionizing and data engineering. Platforms: Docker, MLOps (KubeFlow), AWS, GCP, Linux. Teaches MLOps: packaging, CI/CD, web serving (Flask), maintenance and reporting.}
+
+\area{Research (PhD, AI/ML)}{PhD in speech emotion recognition completed in three years on a Global Excellence Stature (GES) scholarship. Proposed the SEGRT feature set and a speech endpoint-detection algorithm. Eight peer-reviewed publications across speech, computer vision, NLP. Guides a PhD scholar (King Saud University) and an MTech student (BITS Pilani). Journal reviewer, \textit{International Journal of Systems Science}.}
+
+\area{Software Engineering}{8+ years at SIEMENS designing and implementing telecom provisioning, billing, interconnect charging, and electronic-car charging modules. C/C++, ProC, Java Spring, Oracle PL/SQL, SOAP, XML on Linux, including a RedHat Linux multi-tiered application. Built a Qt/C++ call-analysis GUI and an automated monitoring system (Java, shell, awk).}
+
+\area{Retrieval and LLM Applications}{RAG-based correction of ASR drafts before delivery, reducing manual cleanup. LLM tooling: ollama, langchain, langgraph, unsloth. Record linkage for patient data de-duplication. Handwritten medical form reader built around AWS Textract output.}
+
+\area{Data Science and Quantitative Analytics}{Led a team spanning data science, quantitative analytics, and software engineering. Production backtest for complex option trading strategies. Explainable AI with SHAP and accumulated local effect (ALE) plots, built end to end. Clinical trial enrollment prediction and EHR 30-day readmission prediction (88\% test accuracy). Python, R, SQL, pyspark.}
+\end{itemize}
+
+\spacedhrule{0.3em}{0.5em}
+
+%----------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{EXPERIENCE}}}
+
+\vspace{.2cm}
+
+\employerhead{DeliverHealth Solutions}{Remote, India}{[\textsc{July '24 -- Present}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+\rolehead{Senior Data Scientist}{}
+Lead AI/ML product ideation and organization-wide adoption. Design and deploy on-prem specialist models with product owners and partners including Google and Microsoft. Current bar: models small enough to inspect and honest enough to defer, not merely more fluent.
+
+\begin{itemize}[leftmargin=0.5cm, itemsep=0cm]
+\item \textbf{Medical Coding Co-pilot:} SLM fine-tuned on proprietary historical data in a continuous learning loop to assist human coders and cut time-per-document. White-box logits used as a confidence meter. On this task a specialized on-prem SLM outperformed a generic LLM (Gemini) baseline, with right-vs-wrong AUROC moving from $\sim$0.60 to $\sim$0.90.
+\item \textbf{Medical ASR (Med-ASR):} In-house speech-to-text engine on proprietary data. Fine-tuned Gemini-1.5-Pro and Whisper; reached 12\% medical WER without sending encounter audio to a public cloud.
+\item \textbf{RAG-based Medical Correction Engine:} Retrieval-augmented correction of ASR drafts before delivery, reducing manual cleanup and lifting document quality.
+\item \textbf{Automatic Medical Note Generation:} Template-based physician note generation on a self-service platform, using Gemini 3.1 Pro and proprietary historical data.
+\end{itemize}
+\end{leftrule}
+\end{adjustwidth}
+
+\employerhead{Cloudcraftz Solutions}{Kolkata, India}{[\textsc{Nov '22 -- Jun '24}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+\rolehead{Senior Data Scientist}{}
+Led and mentored a team spanning data science, quantitative analytics, and software engineering, delivering finance-domain systems.
+
+\begin{itemize}[leftmargin=0.5cm, itemsep=0cm]
+\item \textbf{Option Trading Strategy Backtest:} Production backtest for complex option strategies. Mix of software engineering, financial analytics, and data science.
+\item \textbf{Explainable AI:} SHAP and accumulated local effect (ALE) visualizations for model transparency; built the product end to end.
+\item \textbf{Data Visualization Platform:} Low-intervention analytics UI; led platform development.
+\end{itemize}
+\end{leftrule}
+\end{adjustwidth}
+
+\employerhead{Veersa Technologies}{Kolkata, India}{[\textsc{May '22 -- Oct '22}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+\rolehead{Data Scientist (Consulting)}{}
+ML model building with tabular and image data in the healthcare domain. Also data engineering, ML model productionizing, and ML team building.
+
+\begin{itemize}[leftmargin=0.5cm, itemsep=0cm]
+\item \textbf{Insurance Claim Denial Prediction:} XGBoost classifier on pre-processed tabular claim features to predict denial or approval, with analysis of denial reasons. 89\% accuracy.
+\item \textbf{Disease Detection from X-Ray Images:} ResNet34 model; 84\% accuracy.
+\item \textbf{Patient Data De-Duplication:} Record linkage to repair broken chains of patient information.
+\item \textbf{Clinical Trial Enrollment Prediction:} Proof of concept on public data to predict final enrollment; $\sim$75\% prediction accuracy.
+\item \textbf{Handwritten Medical Form Reader:} Solution built around AWS Textract output for handwritten text extraction.
+\end{itemize}
+\end{leftrule}
+\end{adjustwidth}
+
+\employerhead{Research and Training Consultancy}{Kolkata, India}{[\textsc{Feb '20 -- Present}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+\rolehead{Research Consultant}{}
+Research consultancy across computer vision, NLP, and data science:
+\begin{itemize}[leftmargin=0.5cm, itemsep=0cm]
+\item \textbf{Human Fall Detection (CV):} Evaluated current deep-learning modules. Proposed a Masked R-CNN semantic segmentation model \cite{roy_2021_mrcnn} at 94\% F1 and 89\% IoU.
+\item \textbf{Text Classification (NLP):} Multi-head attention classifier \cite{roy_2021_text} above 96\% test accuracy, compared with Naive Bayes, logistic regression, random forest, and MLP.
+\item \textbf{EHR and Process Mining:} 30-day readmission prediction; process-mining features into sequence-to-sequence models; 88\% test accuracy.
+\item \textbf{Medical Imaging and CV:} U-Net polyp detection in colonoscopy images; face mask detection with MobileNet V2 and Inception ResNetV2.
+\end{itemize}
+
+\vspace{.2cm}
+
+\rolehead{Training Consultant}{}
+Training tracks for students, career-switchers, and practising engineers: Data Science and ML, Deep Learning (ANN, CNN, RNN, attention), Python for ML/DL (numpy, pandas, pytorch, tensorflow, Flask), Practical ML (MLOps: packaging, CI/CD, web serving), and Cloud and Docker (AWS DMS, RDS, EMR, SageMaker).
+\end{leftrule}
+\end{adjustwidth}
+
+\employerhead{University of Johannesburg}{Johannesburg, South Africa}{[\textsc{Jul '16 -- Sep '21}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+\begin{roleblock}
+\rolehead{Post Doctoral Research Fellow}{[\textsc{Oct '19 -- Sep '21}]}
+Built a feed-forward network \cite{roy_2021_academic} on the doctoral SER feature set \cite{roy_2018_ieee}. Wrote two surveys: emotion recognition in the $4^{th}$ industrial revolution \cite{roy_wesley_2020_springer} and SER classification techniques \cite{roy_2020_wiley}. Opened collaborations with King Saud University \cite{roy_2021_mrcnn} and BITS Pilani \cite{roy_2021_text}.
+\end{roleblock}
+
+\begin{roleblock}
+\rolehead{Doctoral Research Fellow}{[\textsc{Jul '16 -- Jun '19}]}
+Thesis: ``Detecting emotions from speech using Machine Learning Techniques,'' completed in three years. Proposed SEGRT (\textit{subjective emotional gap reduction technique}) \cite{roy_2018_ieee, roy_2020_springer} and a speech endpoint-detection algorithm for pre-processing \cite{roy_2019_cnsns}.
+\end{roleblock}
+\end{leftrule}
+\end{adjustwidth}
+
+\employerhead{SIEMENS}{Kolkata, India}{[{Jan '07 -- Sep '15}]}
+
+\begin{adjustwidth}{3em}{0pt}
+\begin{leftrule}
+\begin{roleblock}
+\rolehead{Associate Consultant}{[{Jan '13 -- Sep '15}]}
+$\bullet$ Designed and implemented a Telecom Service Provisioning system on a RedHat Linux multi-tiered application using \textit{Java Spring, Oracle}; customized it with \textit{Java, SOAP, XML}. \\
+$\bullet$ Designed and implemented the CRM Service Provisioning integration module (\textit{Java, Oracle PL/SQL}) and the Billing module (\textit{C/C++, Oracle PL/SQL}, \textit{Linux}) for a GSM-R Billing system.
+\end{roleblock}
+
+\begin{roleblock}
+\rolehead{Sr. System Engineer}{[{Jan '11 -- Dec '12}]}
+$\bullet$ Designed and implemented a Charging module for an Electronic Car billing system (\textit{C/C++, Oracle}). \\
+$\bullet$ Designed and implemented a GUI-based Telecom Call Analysis system with call tracking and zone-based analysis (\textit{C++, Qt}).
+\end{roleblock}
+
+\begin{roleblock}
+\rolehead{System Engineer}{[{Jan '09 -- Dec '10}]}
+$\bullet$ Designed and implemented Bill Printing and Bill By Email modules (\textit{Java, ProC/C++, Oracle PL/SQL}) and a Charging module for Telecom Interconnect Billing (\textit{Java, Oracle}).
+\end{roleblock}
+
+\begin{roleblock}
+\rolehead{Associate System Engineer}{[{Jan '07 -- Dec '08}]}
+$\bullet$ Single-handedly provided system support for an IVR and USSD solution (\textit{Java, C++, Linux, shell, awk}). Developed an automated monitoring system (\textit{Java, shell, awk}).
+\end{roleblock}
+\end{leftrule}
+\end{adjustwidth}
+
+\spacedhrule{-0.4em}{0.5em}
+
+%----------------------------------------------------------------------------------------
+%	TECHNICAL EXPERTISE
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{TECHNICAL EXPERTISE}}}
+
+\begin{itemize}[leftmargin=1cm, itemsep=-0.1cm]
+	\item \textbf{Programming Languages:} Python, C/C++, R, Matlab, Java, JavaScript, SQL, Scala, Julia.
+	\item \textbf{Libraries:} ollama, langchain, langgraph, unsloth, pytorch, tensorflow, pandas, matplotlib, scipy, opencv, pyspark.
+	\item \textbf{Technologies/Platforms:} On-prem GPU inference, Cloud (AWS, GCP), Linux, Docker, MLOps (KubeFlow), REST, SOAP, XML.
+	\item \textbf{Databases:} RDBMS (Oracle, PostgreSQL, SQL Server, MySQL), NoSQL (MongoDB, DynamoDB, Cassandra), Cloud DB (Amazon RDS).
+\end{itemize}
+
+\spacedhrule{-0.2em}{0.5em}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{EDUCATION}}}
+
+\vspace{.2cm}
+
+\noindent \textscale{1.2}{\textbf{Doctor of Philosophy}} -- University of Johannesburg, 2019. Applied ML \& Speech Signal Processing. \\[0.1cm]
+\noindent \textscale{1.2}{\textbf{Master of Science}} -- Lovely Professional University, 2013. Information Technology. \\[0.1cm]
+\noindent \textscale{1.2}{\textbf{PG Diploma in Computer Applications}} -- DOEACC Society, 2004. \\[0.1cm]
+\noindent \textscale{1.2}{\textbf{Bachelor of Science}} -- University of Calcutta, 2002. Economics (Hons), CS, Mathematics.
+
+\spacedhrule{0.3em}{0.5em}
+
+%----------------------------------------------------------------------------------------
+%	SCHOLARSHIPS, REVIEWING, CERTIFICATES
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{SCHOLARSHIPS, REVIEWING AND CERTIFICATES}}}
+
+\begin{itemize}[leftmargin=1cm, itemsep=-0.1cm]
+	\item Global Excellence Stature (GES) Doctoral Fellowship, University of Johannesburg, 2016.
+	\item GES Post Doctoral Fellowship, University of Johannesburg, 2019.
+	\item Journal Reviewer, \textit{International Journal of Systems Science} (Taylor and Francis).
+	\item Coursera: Deep Learning with PyTorch: Neural Style Transfer; Neural Network from Scratch in TensorFlow.
+\end{itemize}
+
+\spacedhrule{-0.3em}{0.5em}
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+
+\roottitle{\lighter{\textscale{1.2}{PUBLICATIONS}}}
+
+\vspace{0.2cm}
+
+\printbibliography[heading=none]
+
+\end{document}
