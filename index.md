@@ -53,7 +53,7 @@ title: Home
   <div class="experience-item">
     <div class="exp-company">University of Johannesburg</div>
     <div class="exp-meta">Post-Doctoral Fellow &amp; Doctoral Fellow &middot; Jul 2016 &ndash; Sep 2021 &middot; South Africa</div>
-    <div class="exp-desc">Proposed a novel feature set (SEGRT) for speech emotion recognition and a new algorithm for speech endpoint detection. Initiated research collaborations with King Saud University and BITS Pilani. 8 peer-reviewed publications.</div>
+    <div class="exp-desc">Proposed a novel feature set (SEGRT) for speech emotion recognition and a new algorithm for speech endpoint detection. Initiated research collaborations with King Saud University and BITS Pilani. 7 publications and 1 paper in preparation.</div>
   </div>
 
   <div class="experience-item">

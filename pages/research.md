@@ -73,8 +73,8 @@ My research sits at the intersection of machine learning and real-world applicat
 
 ## Research Supervision
 
-- **PhD scholar, King Saud University, Saudi Arabia** — Computer Vision: Detection of human fall from surveillance cameras.
-- **MTech student, BITS Pilani, India** — Computer Vision: Visual Scene Understanding for Autonomous Vehicles.
+- **PhD scholar, King Saud University, Saudi Arabia (completed)** — Computer Vision: Detection of human fall from surveillance cameras.
+- **MTech student, BITS Pilani, India (completed)** — Computer Vision: Visual Scene Understanding for Autonomous Vehicles.
 
 ---
 
