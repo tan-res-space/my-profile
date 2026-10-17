@@ -35,6 +35,8 @@
 \definecolor{dark-blue}{rgb}{0.15,0.15,0.4} % Defines the dark blue color used for links
 \hypersetup{colorlinks,linkcolor={dark-blue},citecolor={dark-blue},urlcolor={dark-blue}} % Assigns the dark blue color to all links in the template
 
+\usepackage{needspace} % Push headings to the next page if too little space remains
+
 \usepackage{tgpagella} % Use the TeX Gyre Pagella font throughout the document
 %\usepackage{cmbright}
 \usepackage[T1]{fontenc}
@@ -79,7 +81,38 @@ skipbelow=\topsep,
 
 \newcommand*\maintitle[2]{\noindent{\LARGE \textbf{#1}}\ \ \ \emph{#2}\vspace{0.3em}} % Main title (name) with date of birth or subtitle
 
-\newcommand*\roottitle[1]{\subsection*{#1}\vspace{-0.3em}\nopagebreak[4]} % Top level sections in the template
+\newcommand*\roottitle[1]{%
+  \par
+  \Needspace{8\baselineskip}%
+  \subsection*{#1}\vspace{-0.3em}\nopagebreak[4]%
+} % Top level sections: start a new page if the heading would be stranded
+
+% Employer heading: company, location, date (including brackets).
+% If the heading plus the first role would not fit, start a new page.
+\newcommand{\employerhead}[3]{%
+  \par
+  \Needspace{10\baselineskip}%
+  \noindent{\textscale{1.4}{\textbf{#1}}}\\*%
+  {\textsc{#2}}{\hfill #3}%
+  \par\nopagebreak
+}
+
+% Role heading: title, optional date (empty if none).
+\newcommand{\rolehead}[2]{%
+  \par
+  \Needspace{6\baselineskip}%
+  \noindent{\textscale{1.2}{\textbf{#1}}}%
+  \ifstrempty{#2}{}{{\hfill #2}}%
+  \\*%
+  \nopagebreak
+}
+
+% Keep a role title with its body. If the block would not fit, move it to the next page.
+\newenvironment{roleblock}{%
+  \par\noindent\begin{minipage}{\linewidth}%
+}{%
+  \end{minipage}\par\vspace{0.2cm}%
+}
 
 \newcommand{\headedsection}[4]{
 	\noindent
