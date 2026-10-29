@@ -21,6 +21,7 @@ cv_source/*.pdf
 # Ruby
 Gemfile.lock
 vendor/
+.bundle/
 
 # OS
 .DS_Store
