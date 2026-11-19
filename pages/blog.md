@@ -3,6 +3,7 @@ layout: page
 title: Blog
 subtitle: Thoughts on AI, machine learning, and building practical solutions.
 permalink: /pages/blog/
+description: "Writing by Tanmoy Roy, PhD on AI, machine learning and building practical solutions."
 ---
 
 {% if site.posts.size > 0 %}

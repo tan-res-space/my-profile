@@ -1,146 +1,61 @@
 ---
 layout: home
-title: Home
 ---
 
 <section class="hero">
-  <h1 class="hero-name">Tanmoy Roy, PhD</h1>
-  <p class="hero-title">Senior Data Scientist &middot; AI/ML Researcher &middot; Consultant &middot; Trainer</p>
-
+  <p class="eyebrow">AI researcher &amp; engineer &middot; PhD</p>
+  <h1 class="hero-name">Tanmoy Roy</h1>
+  <p class="hero-lede">I build AI that knows when it might be wrong.</p>
   <div class="hero-links">
-    <a href="{{ site.author.linkedin }}" target="_blank">LinkedIn</a>
-    <a href="{{ site.author.scholar }}" target="_blank">Google Scholar</a>
-    <a href="{{ site.author.github }}" target="_blank">GitHub</a>
-    <a href="{{ '/pages/cv' | relative_url }}">Download CV</a>
-  </div>
-
-  <div class="summary">
-    <p>
-      I am an AI and Machine Learning professional with 19+ years of experience across industry and academia. Currently a Senior Data Scientist at <strong>DeliverHealth Solutions</strong>, I lead AI-driven healthcare solutions&mdash;including Medical Coding Co-pilots, Automatic Medical Note Generation, and fine-tuned Med-ASR engines&mdash;collaborating with partners like Google and Microsoft.
-    </p>
-    <p>
-      I hold a <strong>PhD</strong> from the <strong>University of Johannesburg</strong> where my research focused on speech emotion recognition using machine learning. I have 8 peer-reviewed publications with Wiley, Springer, IEEE, and Academic Press.
-    </p>
-    <p>
-      Prior to my research career, I spent 8+ years at <strong>SIEMENS</strong> building telecom billing, smart-grid, and electronic vehicle systems using C/C++, Java, and Oracle. This blend of deep industry experience and academic research gives me a unique perspective on building practical AI solutions.
-    </p>
+    <a class="btn btn-primary" href="{{ '/pages/cv/' | relative_url }}">View CV</a>
+    <a class="btn btn-ghost" href="{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn btn-ghost" href="{{ site.author.scholar }}" target="_blank" rel="noopener">Google Scholar</a>
+    <a class="btn btn-ghost" href="{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>
   </div>
 </section>
 
-<hr>
+<section class="section about" aria-labelledby="about-title" markdown="1">
+<h2 id="about-title" class="section-title">About</h2>
 
-<section class="section">
-  <h2 class="section-title">Experience</h2>
+I design and build on-prem language models for medical coding, clinical notes and speech recognition. Every answer carries a calibrated confidence score, so we know when to trust the model and when to hand the work to a person.
 
-  <div class="experience-item">
-    <div class="exp-company">DeliverHealth Solutions</div>
-    <div class="exp-meta">Senior Data Scientist &middot; July 2024 &ndash; Present &middot; Remote, India</div>
-    <div class="exp-desc">Leading AI-driven product ideation and organization-wide AI adoption. Building Medical Coding Co-pilot (SLM fine-tuning), Automatic Medical Note Generation (Gemini 3.1 Pro), RAG-based correction engines, and fine-tuning STT models achieving 12% Medical WER.</div>
-  </div>
+- Medical coding: a fine-tuned model reads a full patient chart and matches human coders on 92.1% of E/M levels, up from 83.0%. Confidence AUROC is 0.89, with 96%-coverage candidate sets.
+- Medical speech recognition: a fine-tuned engine at 12% word error rate, with no audio sent to a public cloud.
+- Retrieval-based correction of speech drafts and automated clinical note generation.
+{: .highlights}
 
-  <div class="experience-item">
-    <div class="exp-company">Cloudcraftz Solutions</div>
-    <div class="exp-meta">Senior Data Scientist &middot; Nov 2022 &ndash; June 2024 &middot; Kolkata, India</div>
-    <div class="exp-desc">Led a team delivering solutions in Finance: option trading backtest systems, Explainable AI products (SHAP/ALE), and data visualization platforms.</div>
-  </div>
+As a consultant, I design agentic AI systems:
 
-  <div class="experience-item">
-    <div class="exp-company">Veersa Technologies</div>
-    <div class="exp-meta">Data Scientist (Consulting) &middot; May 2022 &ndash; Oct 2022 &middot; Kolkata, India</div>
-    <div class="exp-desc">ML model building in healthcare: insurance claim denial prediction (89%), disease detection from X-rays (ResNet34, 84%), patient data de-duplication, and handwritten medical form digitization.</div>
-  </div>
+- AI-driven data delivery: from discovery to reviewed mappings to a deployed cloud pipeline, built for a US healthcare provider.
+- Plan-and-execute agents: a cloud planner that checks the work, and an on-prem agent that runs only human-approved plans.
+{: .highlights}
 
-  <div class="experience-item">
-    <div class="exp-company">University of Johannesburg</div>
-    <div class="exp-meta">Post-Doctoral Fellow &amp; Doctoral Fellow &middot; Jul 2016 &ndash; Sep 2021 &middot; South Africa</div>
-    <div class="exp-desc">Proposed a novel feature set (SEGRT) for speech emotion recognition and a new algorithm for speech endpoint detection. Initiated research collaborations with King Saud University and BITS Pilani. 7 publications and 1 paper in preparation.</div>
-  </div>
+My route here was not straight: 8+ years at Siemens building telecom and EV-charging billing systems, then a PhD and post-doc in speech emotion recognition at the University of Johannesburg, and seven peer-reviewed publications. The engineer in me wants it to run on the hardware we have. The researcher in me wants the evaluation written down before the result comes in.
 
-  <div class="experience-item">
-    <div class="exp-company">SIEMENS</div>
-    <div class="exp-meta">Associate System Engineer &rarr; Associate Consultant &middot; Jan 2007 &ndash; Sep 2015 &middot; Kolkata, India</div>
-    <div class="exp-desc">8+ years building telecom billing, service provisioning, GSM-R billing, electronic car charging, and IVR/USSD systems. Technologies: Java Spring, C/C++, Oracle PL/SQL, Qt, Linux.</div>
-  </div>
+Focus areas: small language models, fine-tuning and compression, confidence calibration, medical ASR, RAG and agentic AI.
+{: .focus}
+
+Models small enough to inspect and honest enough to defer. Not more fluent. More honest.
+{: .closing}
 </section>
 
-<hr>
-
-<section class="section">
-  <h2 class="section-title">Technical Skills</h2>
-
-  <h3>Languages</h3>
-  <div class="skills-grid">
-    <span class="skill-tag">Python</span>
-    <span class="skill-tag">C/C++</span>
-    <span class="skill-tag">Java</span>
-    <span class="skill-tag">R</span>
-    <span class="skill-tag">SQL</span>
-    <span class="skill-tag">Matlab</span>
-    <span class="skill-tag">Scala</span>
-    <span class="skill-tag">Julia</span>
-    <span class="skill-tag">JavaScript</span>
-  </div>
-
-  <h3>ML / DL Frameworks</h3>
-  <div class="skills-grid">
-    <span class="skill-tag">PyTorch</span>
-    <span class="skill-tag">TensorFlow</span>
-    <span class="skill-tag">Keras</span>
-    <span class="skill-tag">scikit-learn</span>
-    <span class="skill-tag">NumPy</span>
-    <span class="skill-tag">Pandas</span>
-    <span class="skill-tag">OpenCV</span>
-    <span class="skill-tag">NLTK</span>
-    <span class="skill-tag">PySpark</span>
-  </div>
-
-  <h3>Infrastructure</h3>
-  <div class="skills-grid">
-    <span class="skill-tag">AWS</span>
-    <span class="skill-tag">GCP</span>
-    <span class="skill-tag">Docker</span>
-    <span class="skill-tag">KubeFlow</span>
-    <span class="skill-tag">MLOps</span>
-    <span class="skill-tag">Linux</span>
-    <span class="skill-tag">REST</span>
-    <span class="skill-tag">Flask</span>
-  </div>
-
-  <h3>Databases</h3>
-  <div class="skills-grid">
-    <span class="skill-tag">Oracle</span>
-    <span class="skill-tag">PostgreSQL</span>
-    <span class="skill-tag">MySQL</span>
-    <span class="skill-tag">MongoDB</span>
-    <span class="skill-tag">DynamoDB</span>
-    <span class="skill-tag">Amazon RDS</span>
-    <span class="skill-tag">Cassandra</span>
-  </div>
-</section>
-
-<hr>
-
-<section class="section">
-  <h2 class="section-title">Education</h2>
-
-  <div class="experience-item">
-    <div class="exp-company">Doctor of Philosophy</div>
-    <div class="exp-meta">University of Johannesburg &middot; 2019 &middot; South Africa</div>
-    <div class="exp-desc">Thesis: "Detecting Emotions From Speech Using Machine Learning Techniques." Area: Applied ML/DL, Speech Signal Processing.</div>
-  </div>
-
-  <div class="experience-item">
-    <div class="exp-company">Master of Science (Information Technology)</div>
-    <div class="exp-meta">Lovely Professional University &middot; 2013 &middot; India</div>
-  </div>
-
-  <div class="experience-item">
-    <div class="exp-company">PG Diploma in Computer Applications</div>
-    <div class="exp-meta">DOEACC Society, Ministry of IT, Govt. of India &middot; 2004</div>
-  </div>
-
-  <div class="experience-item">
-    <div class="exp-company">Bachelor of Science &mdash; Economics (Hons), CS, Mathematics</div>
-    <div class="exp-meta">University of Calcutta &middot; 2002 &middot; India</div>
+<section class="section" aria-labelledby="explore-title">
+  <h2 id="explore-title" class="section-title">Explore</h2>
+  <div class="card-grid">
+    <a class="card" href="{{ '/pages/cv/' | relative_url }}">
+      <span class="card-kicker">CV</span>
+      <span class="card-title">Experience, education &amp; skills</span>
+      <span class="card-text">19+ years across healthcare AI, finance, telecom and academic research.</span>
+    </a>
+    <a class="card" href="{{ '/pages/research/' | relative_url }}">
+      <span class="card-kicker">Research</span>
+      <span class="card-title">Publications</span>
+      <span class="card-text">Speech emotion recognition, speech endpoint detection, computer vision and NLP.</span>
+    </a>
+    <a class="card" href="{{ '/pages/contact/' | relative_url }}">
+      <span class="card-kicker">Contact</span>
+      <span class="card-title">Get in touch</span>
+      <span class="card-text">Consulting, research collaborations, training and conversations about AI/ML.</span>
+    </a>
   </div>
 </section>
