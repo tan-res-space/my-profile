@@ -1,21 +1,31 @@
 # Site settings
-title: "Tanmoy Roy"
-description: "Senior Data Scientist | AI/ML Researcher | PhD"
+title: "Tanmoy Roy, PhD"
+tagline: "AI that knows when it might be wrong"
+description: "Tanmoy Roy, PhD: AI researcher and engineer building on-prem language models with calibrated confidence for medical coding, clinical notes and medical speech recognition."
 url: "https://tan-res-space.github.io"
 baseurl: "/my-profile"
+lang: en_US
+locale: en_US
 author:
   name: "Tanmoy Roy"
   email: "tanmoy.main@gmail.com"
   linkedin: "https://www.linkedin.com/in/tanmoy-roy-328b592b"
   scholar: "https://scholar.google.com/citations?user=FweJmHYAAAAJ&hl=en"
   github: "https://github.com/tan-res-space"
+social:
+  name: "Tanmoy Roy"
+  links:
+    - "https://www.linkedin.com/in/tanmoy-roy-328b592b"
+    - "https://scholar.google.com/citations?user=FweJmHYAAAAJ&hl=en"
+    - "https://github.com/tan-res-space"
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
 permalink: /blog/:year/:month/:day/:title/
 
-# Plugins
+# Plugins (all are on the GitHub Pages allow-list, so the site also builds
+# with the legacy "Deploy from a branch" builder)
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -26,20 +36,31 @@ collections:
   publications:
     output: false
 
-# Exclude from build
+# Never publish these. The CV PDFs in cv_builds/ contain phone numbers,
+# referee contact details and the current employer's name, so they are
+# kept out of the site; the web CV page is published instead.
 exclude:
   - cv_source/
+  - cv_builds/
+  - linkedin_ops/
+  - .agents/
+  - .cursor/
+  - .github/
   - Gemfile
   - Gemfile.lock
   - README.md
   - Makefile
   - node_modules/
-  - .github/
-  - linkedin_ops/
-  - .cursor/
+  - vendor/
+  - .bundle/
+  - .jekyll-cache/
 
 # Defaults
 defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/og-card.png
   - scope:
       path: ""
       type: "posts"

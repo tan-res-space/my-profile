@@ -8,7 +8,7 @@ Personal profile site and multi-format CV system, hosted on GitHub Pages.
 
 ```
 my-profile/
-├── .github/workflows/    GitHub Actions (auto-build CVs)
+├── .github/workflows/    GitHub Actions (deploy site to Pages, auto-build CVs)
 ├── _layouts/             Jekyll HTML templates
 ├── _includes/            Header, footer components
 ├── _posts/               Blog posts
@@ -18,6 +18,19 @@ my-profile/
 ├── pages/                Site pages (CV, Research, Blog, Contact)
 └── index.md              Home page
 ```
+
+## Publishing
+
+The site is built with Jekyll and deployed by `.github/workflows/pages.yml`
+(GitHub Actions) on every push to `main`. Pull requests get a build-only check.
+Repository setting needed once: **Settings > Pages > Build and deployment >
+Source: GitHub Actions**.
+
+Not published on the site (see `exclude` in `_config.yml`): `cv_source/`,
+`cv_builds/`, `linkedin_ops/`, `.agents/`, `.cursor/`. The CV PDFs contain phone
+numbers and referee details, so the site shows a web CV (`pages/cv.md`) with a
+"Save as PDF" button instead of linking the PDFs. The workflow fails the build if
+any phone number or private employer/project name shows up in `_site/`.
 
 ## CV System
 
@@ -37,6 +50,7 @@ PDFs are **automatically rebuilt** via GitHub Actions whenever files in `cv_sour
 
 ### Site preview (requires Ruby + Jekyll)
 ```bash
+bundle config set --local path vendor/bundle
 bundle install
 bundle exec jekyll serve
 # Visit http://localhost:4000/my-profile
@@ -53,7 +67,7 @@ make clean      # Remove build artifacts
 ## Updating Content
 
 - **Profile/pages:** Edit markdown files in `pages/` or `index.md`
-- **CV content:** Edit `cv_source/cv_detailed.tex` — all versions rebuild automatically on push
+- **CV content:** Edit `cv_source/cv_detailed.tex` — all PDF versions rebuild automatically on push. The web CV on the site is `pages/cv.md` and is edited separately.
 - **Blog posts:** Add new `.md` files to `_posts/` with the format `YYYY-MM-DD-title.md`
 - **Styling:** Edit `assets/css/style.css`
 

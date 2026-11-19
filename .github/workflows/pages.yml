@@ -1,0 +1,69 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "cv_source/**"
+      - "cv_builds/**"
+      - "linkedin_ops/**"
+      - ".agents/**"
+      - ".cursor/**"
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - id: pages
+        uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path || '/my-profile' }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: Check nothing private is published
+        run: |
+          set -e
+          test ! -e _site/cv_builds
+          test ! -e _site/linkedin_ops
+          test ! -e _site/.agents
+          test ! -e _site/.cursor
+          test ! -e _site/cv_source
+          if grep -rniE 'deliverhealth|aanvikshiki|discovery2decision|yantra|easecare|athenaone|\+91|7003135175|9830345901' _site; then
+            echo "::error::Private details found in the built site"; exit 1
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
